@@ -10,5 +10,5 @@
 | /device/:id |                    | :heavy_check_mark: |
 | /area/:id   |                    | :heavy_check_mark: |
 | /profile    |                    | :heavy_check_mark: |
-| *           |                    |                    |
+| *           |  404 page          |                    |
 
