@@ -3,6 +3,7 @@ import './App.css'
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import Navigation from './components/Navigation/Navigation';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   return (
     <MantineProvider>
       <Navigation />
+      <Footer />
     </MantineProvider>
   )
 }
