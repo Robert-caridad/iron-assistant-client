@@ -6,11 +6,9 @@ const HomePage = () => {
 
     return (
         <div>
-
             <NavigationHomePage />
             <HeroImageBackground />
             <Footer />
-
         </div>
     )
 }

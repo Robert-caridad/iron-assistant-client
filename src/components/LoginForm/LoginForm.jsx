@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import classes from './LoginForm.module.css';
 import {
     Paper,
@@ -31,6 +32,11 @@ const LoginForm = () => {
                     Don&apos;t have an account?{' '}
                     <Anchor href="#" fw={700} onClick={(event) => event.preventDefault()}>
                         Register
+                    </Anchor>
+                </Text>
+                <Text ta="center" mt="md">
+                    <Anchor fw={700} component={Link} to="/">
+                        Back
                     </Anchor>
                 </Text>
             </Paper>

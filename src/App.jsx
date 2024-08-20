@@ -6,12 +6,11 @@ import Layout from './components/Layout';
 
 function App() {
   return (
-    <MantineProvider>
+    <MantineProvider defaultColorScheme="dark">
       <Layout>
         <AppRoutes />
       </Layout>
     </MantineProvider>
   )
 }
-
 export default App
