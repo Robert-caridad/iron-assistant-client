@@ -2,9 +2,11 @@ import axios from 'axios'
 
 class AuthServices {
     constructor() {
+
         this.axiosApp = axios.create({
-            baseURL: `${import.meta.env.REACT_APP_API_URL}/api`
+            baseURL: `${import.meta.env.VITE_APP_API_URL}/api`
         })
+
 
         this.axiosApp.interceptors.request.use(config => {
             const storedToken = localStorage.getItem('userToken')
