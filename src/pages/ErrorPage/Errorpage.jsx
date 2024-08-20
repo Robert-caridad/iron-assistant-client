@@ -1,6 +1,8 @@
+import Error from "../../components/Error/Error"
+
 const ErrorPage = () => {
     return (
-        <h1>ErrorPage lol</h1>
+        <Error />
     )
 
 }
