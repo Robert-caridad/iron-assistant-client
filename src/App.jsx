@@ -5,6 +5,7 @@ import { MantineProvider } from '@mantine/core';
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage/HomePage';
+import LoginForm from './components/NavigationHomePage/NavigationHomePage';
 
 
 function App() {
@@ -12,9 +13,10 @@ function App() {
 
   return (
     <MantineProvider>
-      {/* <HomePage /> */}
-      <Navigation />
-      <Footer />
+      {/* <LoginForm /> */}
+      <HomePage />
+      {/* <Navigation /> */}
+      {/* <Footer /> */}
     </MantineProvider>
   )
 }

@@ -1,8 +1,17 @@
+import NavigationHomePage from "../../components/NavigationHomePage/NavigationHomePage"
+import Footer from "../../components/Footer/Footer"
+import HeroImageBackground from "../../components/HeroImageBackground/HeroImageBackground"
+
 const HomePage = () => {
+
     return (
-        <h1>HomePage lol</h1>
+        <div>
+
+            <NavigationHomePage />
+            <HeroImageBackground />
+            <Footer />
+
+        </div>
     )
-
 }
-
 export default HomePage
