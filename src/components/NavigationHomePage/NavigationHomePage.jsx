@@ -23,7 +23,7 @@ const NavigationHomePage = () => {
                     <MantineLogo size={30} />
                     <Group visibleFrom="sm">
                         <Button variant="default" component={Link} to="/login">Log in</Button>
-                        <Button component={Link} to="/login">Sign up</Button>
+                        <Button component={Link} to="/signup">Sign up</Button>
                         <ButtonColorTheme />
                     </Group>
                     <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
