@@ -1,18 +1,15 @@
 import './App.css'
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
-import Navigation from './components/Navigation/Navigation';
-import Footer from './components/Footer/Footer';
 import AppRoutes from './routes/AppRoutes';
-
+import Layout from './components/Layout';
 
 function App() {
-
   return (
     <MantineProvider>
-      <Navigation />
-      <AppRoutes />
-      <Footer />
+      <Layout>
+        <AppRoutes />
+      </Layout>
     </MantineProvider>
   )
 }
