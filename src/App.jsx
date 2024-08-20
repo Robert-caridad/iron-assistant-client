@@ -10,9 +10,7 @@ function App() {
 
   return (
     <MantineProvider>
-      <Navigation />
       <AppRoutes />
-      <Footer />
     </MantineProvider>
   )
 }
