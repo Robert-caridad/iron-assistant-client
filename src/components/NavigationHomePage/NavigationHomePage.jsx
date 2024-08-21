@@ -30,16 +30,18 @@ const NavigationHomePage = () => {
                         <MantineLogo size={30} />
                     </Anchor>
                     {
-                        loggedUser ? <Group visibleFrom="sm">
-                            <Text>{`Welcome! ${loggedUser.username}`}</Text>
-                            <Button variant="default" component={Link} to="/dashboard/home">Dashboard</Button>
-                            <Button onClick={logoutUser}>Logout</Button>
-                            <ButtonColorTheme />
-                        </Group> : <Group visibleFrom="sm">
-                            <Button variant="default" component={Link} to="/login">Log in</Button>
-                            <Button component={Link} to="/signup">Sign up</Button>
-                            <ButtonColorTheme />
-                        </Group>
+                        loggedUser ?
+                            <Group visibleFrom="sm">
+                                <Text>{`Welcome! ${loggedUser.username}`}</Text>
+                                <Button variant="default" component={Link} to="/dashboard/home">Dashboard</Button>
+                                <Button onClick={logoutUser}>Logout</Button>
+                                <ButtonColorTheme />
+                            </Group> :
+                            <Group visibleFrom="sm">
+                                <Button variant="default" component={Link} to="/login">Log in</Button>
+                                <Button component={Link} to="/signup">Sign up</Button>
+                                <ButtonColorTheme />
+                            </Group>
                     }
 
                     <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />

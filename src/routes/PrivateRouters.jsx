@@ -14,7 +14,7 @@ const PrivateRouter = () => {
 
     if (!loggedUser) {
         // TODO: change route
-        return <Navigate to='/' />
+        return <Navigate to='/?err=401' />
     }
 
     return (

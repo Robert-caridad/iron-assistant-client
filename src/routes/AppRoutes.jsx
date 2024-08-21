@@ -7,7 +7,7 @@ import ErrorPage from '../pages/ErrorPage/Errorpage'
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage'
 import FaqPage from '../pages/FaqPage/FaqPage'
 import HomePage from '../pages/HomePage/HomePage'
-import HomePageDashBoard from '../pages/dashBoard/HomePageDashBoard/HomePageDashBoard'
+import HomePageDashBoard from '../pages/_DashBoard/HomePageDashBoard/HomePageDashBoard'
 
 const AppRoutes = () => {
     return (
@@ -18,7 +18,6 @@ const AppRoutes = () => {
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/about' element={<AboutUsPage />} />
                 <Route path='/faq' element={<FaqPage />} />
-                <Route path='*' element={<ErrorPage />} />
 
                 <Route element={<PrivateRouter />}>
                     <Route path='/dashboard/home' element={<HomePageDashBoard />} />
@@ -27,6 +26,8 @@ const AppRoutes = () => {
                     <Route path='/dashboard/automations' />
                     <Route path='/dashboard/account' />
                 </Route>
+
+                <Route path='*' element={<ErrorPage />} />
             </Routes>
         </div>
     )

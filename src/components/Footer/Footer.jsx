@@ -3,15 +3,11 @@ import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/
 import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './Footer.module.css';
 import { Link } from 'react-router-dom';
+import { FOOTER_LINKS } from '../../consts/navigation.consts'
 
-const links = [
-    { to: '/about', label: 'About' },
-    { to: '/faq', label: 'Faq' },
-    { to: '/', label: 'Careers' },
-];
 
 const Footer = () => {
-    const items = links.map((link) => (
+    const items = FOOTER_LINKS.map((link) => (
         <Anchor
             c="dimmed"
             key={link.label}
