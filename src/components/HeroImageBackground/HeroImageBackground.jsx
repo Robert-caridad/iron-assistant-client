@@ -1,6 +1,7 @@
 import cx from 'clsx';
 import { Title, Text, Container, Button, Overlay } from '@mantine/core';
 import classes from './HeroImageBackground.module.css';
+import { Link } from 'react-router-dom';
 
 const HeroImageBackground = () => {
     return (
@@ -9,21 +10,20 @@ const HeroImageBackground = () => {
 
             <div className={classes.inner}>
                 <Title className={classes.title}>
-                    Automated AI code reviews for{' '}
+                    Iron Assistant for{' '}
                     <Text component="span" inherit className={classes.highlight}>
-                        any stack
+                        any person
                     </Text>
                 </Title>
 
                 <Container size={640}>
                     <Text size="lg" className={classes.description}>
-                        Build more reliable software with AI companion. AI is also trained to detect lazy
-                        developers who do nothing and just complain on Twitter.
+                        Bringing smart home automation to everyone. Simplify your life with our easy-to-use home assistant app.
                     </Text>
                 </Container>
 
                 <div className={classes.controls}>
-                    <Button className={classes.control} variant="white" size="lg">
+                    <Button className={classes.control} variant="white" size="lg" component={Link} to="/signup" mr={10}>
                         Get started
                     </Button>
                     <Button className={cx(classes.control, classes.secondaryControl)} size="lg">

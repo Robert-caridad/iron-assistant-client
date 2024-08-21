@@ -5,7 +5,8 @@ import {
     Burger,
     Drawer,
     ScrollArea,
-    rem
+    rem,
+    Anchor
 } from '@mantine/core';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import { useDisclosure } from '@mantine/hooks';
@@ -20,7 +21,9 @@ const NavigationHomePage = () => {
         <Box pb={120}>
             <header className={classes.header}>
                 <Group justify="space-between" h="100%">
-                    <MantineLogo size={30} />
+                    <Anchor component={Link} to='/' >
+                        <MantineLogo size={30} />
+                    </Anchor>
                     <Group visibleFrom="sm">
                         <Button variant="default" component={Link} to="/login">Log in</Button>
                         <Button component={Link} to="/signup">Sign up</Button>

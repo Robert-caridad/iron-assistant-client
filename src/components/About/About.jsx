@@ -1,14 +1,31 @@
-import { Card, Avatar, Text, Group, Button } from '@mantine/core';
+import { Card, Avatar, Text, Group, Button, Anchor } from '@mantine/core';
 import classes from './About.module.css';
 
-const stats = [
+const statsR = [
     { value: '34K', label: 'Followers' },
-    { value: '187', label: 'Follows' },
-    { value: '1.6K', label: 'Posts' },
+    { value: '76', label: 'Follows' },
+    { value: '4.8K', label: 'Posts' },
+];
+
+const statsRDB = [
+    { value: '76K', label: 'Followers' },
+    { value: '170', label: 'Follows' },
+    { value: '2.6K', label: 'Posts' },
 ];
 
 const About = () => {
-    const items = stats.map((stat) => (
+    const itemsR = statsR.map((stat) => (
+        <div key={stat.label}>
+            <Text ta="center" fz="lg" fw={500}>
+                {stat.value}
+            </Text>
+            <Text ta="center" fz="sm" c="dimmed" lh={1}>
+                {stat.label}
+            </Text>
+        </div>
+    ));
+
+    const itemsRDB = statsRDB.map((stat) => (
         <div key={stat.label}>
             <Text ta="center" fz="lg" fw={500}>
                 {stat.value}
@@ -20,7 +37,7 @@ const About = () => {
     ));
 
     return (
-        <Group mt={250} justify="center" gap={100}>
+        <Group mt={25} justify="center" gap={100}>
             <Card withBorder padding="xl" radius="md" className={classes.card}>
                 <Card.Section
                     h={140}
@@ -38,15 +55,15 @@ const About = () => {
                     className={classes.avatar}
                 />
                 <Text ta="center" fz="lg" fw={500} mt="sm">
-                    Bill Headbanger
+                    Robert Caridad
                 </Text>
                 <Text ta="center" fz="sm" c="dimmed">
                     Fullstack engineer
                 </Text>
                 <Group mt="md" justify="center" gap={30}>
-                    {items}
+                    {itemsR}
                 </Group>
-                <Button fullWidth radius="md" mt="xl" size="md" variant="default">
+                <Button component={Anchor} href='https://www.instagram.com/' target="_blank" radius="md" mt="xl" size="md" variant="default">
                     Follow
                 </Button>
             </Card>
@@ -68,20 +85,19 @@ const About = () => {
                     className={classes.avatar}
                 />
                 <Text ta="center" fz="lg" fw={500} mt="sm">
-                    Bill Headbanger
+                    Rubén Díaz
                 </Text>
                 <Text ta="center" fz="sm" c="dimmed">
                     Fullstack engineer
                 </Text>
                 <Group mt="md" justify="center" gap={30}>
-                    {items}
+                    {itemsRDB}
                 </Group>
-                <Button fullWidth radius="md" mt="xl" size="md" variant="default">
+                <Button component={Anchor} href='https://www.instagram.com/rdbcodelab' target="_blank" fullWidth radius="md" mt="xl" size="md" variant="default">
                     Follow
                 </Button>
             </Card>
         </Group>
-
     );
 }
 

@@ -3,7 +3,6 @@ import Footer from "../../components/Footer/Footer"
 import HeroImageBackground from "../../components/HeroImageBackground/HeroImageBackground"
 
 const HomePage = () => {
-
     return (
         <div>
             <NavigationHomePage />
