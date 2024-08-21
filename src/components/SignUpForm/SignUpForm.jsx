@@ -32,7 +32,6 @@ const SignUpForm = () => {
     });
 
     const handleFormSubmit = userData => {
-
         authServices
             .signupUser(userData)
             .then(() => navigate('/login'))

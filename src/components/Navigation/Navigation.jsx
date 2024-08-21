@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { UnstyledButton, Tooltip, Title, rem } from '@mantine/core';
+import { useState } from 'react'
+import { UnstyledButton, Tooltip, Title, rem } from '@mantine/core'
 import {
     IconHome2,
     IconGauge,
@@ -8,9 +8,9 @@ import {
     IconCalendarStats,
     IconUser,
     IconSettings,
-} from '@tabler/icons-react';
-import { MantineLogo } from '@mantinex/mantine-logo';
-import classes from './Navigation.module.css';
+} from '@tabler/icons-react'
+import { MantineLogo } from '@mantinex/mantine-logo'
+import classes from './Navigation.module.css'
 
 const mainLinksMockdata = [
     { icon: IconHome2, label: 'Home' },
@@ -20,7 +20,7 @@ const mainLinksMockdata = [
     { icon: IconUser, label: 'Account' },
     { icon: IconFingerprint, label: 'Security' },
     { icon: IconSettings, label: 'Settings' },
-];
+]
 
 const linksMockdata = [
     'Security',
@@ -34,11 +34,11 @@ const linksMockdata = [
     'Pull Requests',
     'Open Issues',
     'Wiki pages',
-];
+]
 
 const Navigation = () => {
-    const [active, setActive] = useState('Releases');
-    const [activeLink, setActiveLink] = useState('Settings');
+    const [active, setActive] = useState('Releases')
+    const [activeLink, setActiveLink] = useState('Settings')
 
     const mainLinks = mainLinksMockdata.map((link) => (
         <Tooltip
@@ -56,7 +56,7 @@ const Navigation = () => {
                 <link.icon style={{ width: rem(22), height: rem(22) }} stroke={1.5} />
             </UnstyledButton>
         </Tooltip>
-    ));
+    ))
 
     const links = linksMockdata.map((link) => (
         <a
@@ -64,14 +64,14 @@ const Navigation = () => {
             data-active={activeLink === link || undefined}
             href="#"
             onClick={(event) => {
-                event.preventDefault();
-                setActiveLink(link);
+                event.preventDefault()
+                setActiveLink(link)
             }}
             key={link}
         >
             {link}
         </a>
-    ));
+    ))
 
     return (
         <nav className={classes.navbar}>
@@ -91,7 +91,7 @@ const Navigation = () => {
                 </div>
             </div>
         </nav>
-    );
+    )
 }
 
 export default Navigation

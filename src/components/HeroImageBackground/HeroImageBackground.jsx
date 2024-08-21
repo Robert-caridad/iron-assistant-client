@@ -32,7 +32,7 @@ const HeroImageBackground = () => {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default HeroImageBackground

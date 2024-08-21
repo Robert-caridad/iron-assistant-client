@@ -1,6 +1,6 @@
-import { Image, Container, Title, Text, Button, SimpleGrid } from '@mantine/core';
-// import image from './image.svg';
-import classes from './Error.module.css';
+import { Image, Container, Title, Text, Button, SimpleGrid } from '@mantine/core'
+// import image from './image.svg'
+import classes from './Error.module.css'
 
 const Error = () => {
     return (
@@ -20,7 +20,7 @@ const Error = () => {
                 <Image src={image.src} className={classes.desktopImage} />
             </SimpleGrid>
         </Container>
-    );
+    )
 }
 
 export default Error

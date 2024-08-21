@@ -22,7 +22,7 @@ const Footer = () => {
         >
             {link.label}
         </Anchor>
-    ));
+    ))
 
     return (
         <div className={classes.footer}>
@@ -45,7 +45,7 @@ const Footer = () => {
                 </Group>
             </div>
         </div>
-    );
+    )
 }
 
 export default Footer

@@ -1,6 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
-import classes from './LoginForm.module.css';
-import { useForm } from '@mantine/form';
+import { Link, useNavigate } from 'react-router-dom'
+import classes from './LoginForm.module.css'
+import { useForm } from '@mantine/form'
 import {
     Paper,
     TextInput,
@@ -10,9 +10,9 @@ import {
     Title,
     Text,
     Anchor,
-} from '@mantine/core';
-import { AuthContext } from '../../contexts/auth.contexts';
-import { useContext } from 'react';
+} from '@mantine/core'
+import { AuthContext } from '../../contexts/auth.contexts'
+import { useContext } from 'react'
 
 const LoginForm = () => {
 
@@ -31,7 +31,7 @@ const LoginForm = () => {
             password: (value) => (value.length < 2 ? 'Password must have at least 2 character' : null),
         }
 
-    });
+    })
 
     const handleFormSubmit = userData => {
         loginUser(userData)
@@ -53,7 +53,7 @@ const LoginForm = () => {
                     </Button>
                 </form>
                 <Text ta="center" mt="md">
-                    Don&apos;t have an account?{' '}
+                    Don&apost have an account?{' '}
                     <Anchor fw={700} component={Link} to="/signup">
                         Register
                     </Anchor>
