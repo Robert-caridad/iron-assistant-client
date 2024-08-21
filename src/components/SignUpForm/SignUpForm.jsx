@@ -1,6 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
-import classes from './SignUpForm.module.css';
-import { useForm } from '@mantine/form';
+import { Link, useNavigate } from 'react-router-dom'
+import classes from './SignUpForm.module.css'
+import { useForm } from '@mantine/form'
 import {
     Paper,
     TextInput,
@@ -9,7 +9,7 @@ import {
     Title,
     Text,
     Anchor,
-} from '@mantine/core';
+} from '@mantine/core'
 import authServices from "../../services/auth.services"
 
 const SignUpForm = () => {
@@ -29,7 +29,7 @@ const SignUpForm = () => {
             password: (value) => (value.length < 2 ? 'Password must have at least 2 character' : null),
         }
 
-    });
+    })
 
     const handleFormSubmit = userData => {
 

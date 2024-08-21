@@ -1,11 +1,11 @@
-import { Card, Avatar, Text, Group, Button } from '@mantine/core';
-import classes from './About.module.css';
+import { Card, Avatar, Text, Group, Button } from '@mantine/core'
+import classes from './About.module.css'
 
 const stats = [
     { value: '34K', label: 'Followers' },
     { value: '187', label: 'Follows' },
     { value: '1.6K', label: 'Posts' },
-];
+]
 
 const About = () => {
     const items = stats.map((stat) => (
@@ -17,7 +17,7 @@ const About = () => {
                 {stat.label}
             </Text>
         </div>
-    ));
+    ))
 
     return (
         <Group mt={250} justify="center" gap={100}>
@@ -81,8 +81,7 @@ const About = () => {
                 </Button>
             </Card>
         </Group>
-
-    );
+    )
 }
 
 export default About

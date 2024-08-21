@@ -1,7 +1,7 @@
-import { Anchor, Group, ActionIcon, rem } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
-import { MantineLogo } from '@mantinex/mantine-logo';
-import classes from './Footer.module.css';
+import { Anchor, Group, ActionIcon, rem } from '@mantine/core'
+import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react'
+import { MantineLogo } from '@mantinex/mantine-logo'
+import classes from './Footer.module.css'
 
 const links = [
     { link: '#', label: 'Contact' },
@@ -9,7 +9,7 @@ const links = [
     { link: '#', label: 'Blog' },
     { link: '#', label: 'Store' },
     { link: '#', label: 'Careers' },
-];
+]
 
 const Footer = () => {
     const items = links.map((link) => (
@@ -23,7 +23,7 @@ const Footer = () => {
         >
             {link.label}
         </Anchor>
-    ));
+    ))
 
     return (
         <div className={classes.footer}>
@@ -45,7 +45,7 @@ const Footer = () => {
                 </Group>
             </div>
         </div>
-    );
+    )
 }
 
 export default Footer
