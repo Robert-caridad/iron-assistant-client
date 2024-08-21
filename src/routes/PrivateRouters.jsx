@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { AuthContext } from "../contexts/auth.contexts"
-import { Outlet } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
+import Layout from "../components/Layout"
 
 const PrivateRouter = () => {
 
@@ -11,12 +12,20 @@ const PrivateRouter = () => {
         return <h1>Loading</h1>
     }
 
-    if (!loggedUser) {
-        //TODO: change route
-        return <Navigate to='/' />
-    }
+    // if (!loggedUser) {
+    //     TODO: change route
+    //     return <Navigate to='/' />
+    // }
 
-    return <Outlet />
+    return (
+        <Layout>
+            <Outlet />
+        </Layout>
+    )
+
+
+
+
 }
 
 export default PrivateRouter

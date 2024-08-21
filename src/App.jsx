@@ -7,9 +7,7 @@ import Layout from './components/Layout'
 function App() {
   return (
     <MantineProvider defaultColorScheme="dark">
-      <Layout>
-        <AppRoutes />
-      </Layout>
+      <AppRoutes />
     </MantineProvider>
   )
 }
