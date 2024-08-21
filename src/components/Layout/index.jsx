@@ -5,8 +5,8 @@ import { Grid, GridCol, Group } from "@mantine/core";
 export default function Layout({ children }) {
     return (
         <Grid>
-            <Grid.Col span={3}> <Navigation /></Grid.Col>
-            <Grid.Col span={9}>{children}</Grid.Col>
+            <Grid.Col span="content"> <Navigation /></Grid.Col>
+            <Grid.Col span="auto">{children}</Grid.Col>
         </Grid>
     )
 }

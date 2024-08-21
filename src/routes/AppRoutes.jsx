@@ -6,8 +6,8 @@ import LoginPage from '../pages/LoginPage/LoginPages'
 import ErrorPage from '../pages/ErrorPage/Errorpage'
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage'
 import FaqPage from '../pages/FaqPage/FaqPage'
-import Layout from '../components/Layout'
-import HomePage from '../pages/HomePage/Homepage'
+import HomePage from '../pages/HomePage/HomePage'
+import HomePageDashBoard from '../pages/dashBoard/HomePageDashBoard/HomePageDashBoard'
 
 const AppRoutes = () => {
     return (
@@ -21,7 +21,7 @@ const AppRoutes = () => {
                 <Route path='*' element={<ErrorPage />} />
 
                 <Route element={<PrivateRouter />}>
-                    <Route path='/dashboard/home' element={<HomePage />} />
+                    <Route path='/dashboard/home' element={<HomePageDashBoard />} />
                     <Route path='/dashboard/devices' />
                     <Route path='/dashboard/areas' />
                     <Route path='/dashboard/automations' />
