@@ -12,11 +12,11 @@ import {
     Anchor,
 } from '@mantine/core'
 import { AuthContext } from '../../contexts/auth.contexts'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 const LoginForm = () => {
 
-    const { loginUser, authenticateUser } = useContext(AuthContext)
+    const { loginUser, loggedUser } = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -35,8 +35,14 @@ const LoginForm = () => {
 
     const handleFormSubmit = userData => {
         loginUser(userData)
-        console.log(userData)
+
     }
+
+    useEffect(() => {
+        if (loggedUser) {
+            navigate("/")
+        }
+    }, [loggedUser])
 
     return (
         <div className={classes.wrapper}>

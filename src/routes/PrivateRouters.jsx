@@ -12,20 +12,16 @@ const PrivateRouter = () => {
         return <h1>Loading</h1>
     }
 
-    // if (!loggedUser) {
-    //     TODO: change route
-    //     return <Navigate to='/' />
-    // }
+    if (!loggedUser) {
+        // TODO: change route
+        return <Navigate to='/' />
+    }
 
     return (
         <Layout>
             <Outlet />
         </Layout>
     )
-
-
-
-
 }
 
 export default PrivateRouter

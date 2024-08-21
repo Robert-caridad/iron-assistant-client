@@ -58,7 +58,6 @@ const SignUpForm = () => {
                         Login
                     </Anchor>
                 </Text>
-
             </Paper>
         </div >
     )

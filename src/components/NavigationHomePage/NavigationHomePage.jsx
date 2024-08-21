@@ -6,16 +6,21 @@ import {
     Drawer,
     ScrollArea,
     rem,
-    Anchor
+    Anchor,
+    Text
 } from '@mantine/core';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './NavigationHomePage.module.css';
 import { Link } from 'react-router-dom';
 import ButtonColorTheme from '../ButtonColorTheme/ButtonColorTheme';
+import { AuthContext } from '../../contexts/auth.contexts';
+import { useContext } from 'react';
 
 const NavigationHomePage = () => {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
+
+    const { loggedUser, logoutUser } = useContext(AuthContext)
 
     return (
         <Box pb={120}>
@@ -24,11 +29,19 @@ const NavigationHomePage = () => {
                     <Anchor component={Link} to='/' >
                         <MantineLogo size={30} />
                     </Anchor>
-                    <Group visibleFrom="sm">
-                        <Button variant="default" component={Link} to="/login">Log in</Button>
-                        <Button component={Link} to="/signup">Sign up</Button>
-                        <ButtonColorTheme />
-                    </Group>
+                    {
+                        loggedUser ? <Group visibleFrom="sm">
+                            <Text>{`Welcome! ${loggedUser.username}`}</Text>
+                            <Button variant="default" component={Link} to="/dashboard/home">Dashboard</Button>
+                            <Button onClick={logoutUser}>Logout</Button>
+                            <ButtonColorTheme />
+                        </Group> : <Group visibleFrom="sm">
+                            <Button variant="default" component={Link} to="/login">Log in</Button>
+                            <Button component={Link} to="/signup">Sign up</Button>
+                            <ButtonColorTheme />
+                        </Group>
+                    }
+
                     <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
                 </Group>
             </header>

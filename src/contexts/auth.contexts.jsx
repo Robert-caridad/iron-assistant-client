@@ -9,14 +9,13 @@ function AuthProviderWrapper(props) {
     const [isLoading, setIsLoading] = useState(true)
 
     const loginUser = loginData => {
-
         authServices
             .loginUser(loginData)
             .then(({ data }) => {
                 localStorage.setItem('userToken', data.authToken)
                 authenticateUser()
             })
-            .catch(err => console.log(err))
+            .catch(err => alert(err.response.data.message))
     }
 
     const authenticateUser = () => {
