@@ -9,15 +9,16 @@ import {
 } from '@tabler/icons-react'
 import { MantineLogo } from '@mantinex/mantine-logo'
 import classes from './Navigation.module.css'
+import { useNavigate } from 'react-router-dom'
 
 const Home = [
-    'Home'
+    { nameLink: 'Home', route: '/dashboard/home' },
 ]
 
 const Dashboard = [
-    'Devices',
-    'Areas',
-    'Automation'
+    { nameLink: 'Devices', route: '/dashboard/devices' },
+    { nameLink: 'Areas', route: '/dashboard/areas' },
+    { nameLink: 'Automations', route: '/dashboard/automations' },
 ]
 
 const Analytics = [
@@ -53,6 +54,8 @@ const Navigation = () => {
     const [activeLink, setActiveLink] = useState('Home')
     const [selectLink, setSelectLink] = useState(Home)
 
+    const navigate = useNavigate()
+
     const mainLinks = mainLinksMockdata.map((link) => (
         <Tooltip
             label={link.label}
@@ -78,15 +81,16 @@ const Navigation = () => {
     const links = (data) => data.map((link) => (
         <a
             className={classes.link}
-            data-active={activeLink === link || undefined}
+            data-active={activeLink === link.nameLink || undefined}
             href="#"
             onClick={(event) => {
                 event.preventDefault()
-                setActiveLink(link)
+                setActiveLink(link.nameLink)
+                navigate(link.route)
             }}
-            key={link}
+            key={link.nameLink}
         >
-            {link}
+            {link.nameLink}
         </a>
     ))
 

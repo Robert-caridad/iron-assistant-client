@@ -4,7 +4,7 @@ const HomePageDashBoard = () => {
 
     return (
         <div>
-            <CardDashBoard />
+
         </div>
     )
 }
