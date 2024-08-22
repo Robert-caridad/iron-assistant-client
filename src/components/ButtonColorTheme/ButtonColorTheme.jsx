@@ -11,7 +11,7 @@ const ButtonColorTheme = () => {
         <ActionIcon
             onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
             variant="default"
-            size="xl"
+            size={36}
             aria-label="Toggle color scheme"
         >
             <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />

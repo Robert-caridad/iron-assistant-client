@@ -7,7 +7,7 @@ import ErrorPage from '../pages/ErrorPage/Errorpage'
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage'
 import FaqPage from '../pages/FaqPage/FaqPage'
 import HomePage from '../pages/HomePage/HomePage'
-import HomePageDashBoard from '../pages/_DashBoard/HomePageDashBoard/HomePageDashBoard'
+import HomePageDashBoard from '../pages/DashBoard/HomePageDashBoard/HomePageDashBoard'
 
 const AppRoutes = () => {
     return (
