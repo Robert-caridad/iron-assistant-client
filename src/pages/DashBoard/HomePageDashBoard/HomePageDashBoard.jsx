@@ -1,10 +1,10 @@
-import CardDashBoard from "./../../../components/Card/Card"
+import CardsAresList from "./../../../components/CardsAresList/CardsAresList"
 
 const HomePageDashBoard = () => {
 
     return (
         <div>
-            <CardDashBoard />
+            <CardsAresList />
         </div>
     )
 }

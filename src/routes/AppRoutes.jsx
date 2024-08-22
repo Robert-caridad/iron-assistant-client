@@ -8,6 +8,7 @@ import AboutUsPage from '../pages/AboutUsPage/AboutUsPage'
 import FaqPage from '../pages/FaqPage/FaqPage'
 import HomePage from '../pages/HomePage/HomePage'
 import HomePageDashBoard from '../pages/DashBoard/HomePageDashBoard/HomePageDashBoard'
+import DevicesListPage from '../pages/DashBoard/DevicesListPage/DevicesListPage'
 
 const AppRoutes = () => {
     return (
@@ -20,7 +21,7 @@ const AppRoutes = () => {
                 <Route path='/faq' element={<FaqPage />} />
 
                 <Route element={<PrivateRouter />}>
-                    <Route path='/dashboard/home' element={<HomePageDashBoard />} />
+                    <Route path='/dashboard/home' />
                     <Route path='/dashboard/devices' />
                     <Route path='/dashboard/areas' />
                     <Route path='/dashboard/automations' />
