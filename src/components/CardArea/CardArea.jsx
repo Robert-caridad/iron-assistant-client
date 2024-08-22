@@ -1,8 +1,9 @@
 import { IconEye, IconMessageCircle } from '@tabler/icons-react';
 import { Card, Text, Group, Center, rem, useMantineTheme } from '@mantine/core';
-import classes from './Card.module.css';
+import classes from './CardArea.module.css'
 
-const CardDashBoard = () => {
+const CardArea = ({ name }) => {
+
     const theme = useMantineTheme();
 
     return (
@@ -27,12 +28,12 @@ const CardDashBoard = () => {
             <div className={classes.content}>
                 <div>
                     <Text size="lg" className={classes.title} fw={500}>
-                        Journey to Swiss Alps
+                        {name}
                     </Text>
 
                     <Group justify="space-between" gap="xs">
                         <Text size="sm" className={classes.author}>
-                            Robert Gluesticker
+                            button{/*  TODO add a button */}
                         </Text>
 
                         <Group gap="lg">
@@ -64,4 +65,4 @@ const CardDashBoard = () => {
     );
 }
 
-export default CardDashBoard
+export default CardArea
