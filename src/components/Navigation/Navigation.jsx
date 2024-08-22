@@ -4,41 +4,54 @@ import {
     IconHome2,
     IconGauge,
     IconDeviceDesktopAnalytics,
-    IconFingerprint,
-    IconCalendarStats,
     IconUser,
     IconSettings,
 } from '@tabler/icons-react'
 import { MantineLogo } from '@mantinex/mantine-logo'
 import classes from './Navigation.module.css'
 
-const mainLinksMockdata = [
-    { icon: IconHome2, label: 'Home' },
-    { icon: IconGauge, label: 'Dashboard' },
-    { icon: IconDeviceDesktopAnalytics, label: 'Analytics' },
-    { icon: IconCalendarStats, label: 'Releases' },
-    { icon: IconUser, label: 'Account' },
-    { icon: IconFingerprint, label: 'Security' },
-    { icon: IconSettings, label: 'Settings' },
+const Home = [
+    'Home'
 ]
 
-const linksMockdata = [
-    'Security',
-    'Settings',
-    'Dashboard',
-    'Releases',
-    'Account',
-    'Orders',
-    'Clients',
-    'Databases',
-    'Pull Requests',
-    'Open Issues',
-    'Wiki pages',
+const Dashboard = [
+    'Devices',
+    'Areas',
+    'Automation'
 ]
+
+const Analytics = [
+    'Spare1',
+    'Spare2',
+    'Spare3'
+]
+
+const Account = [
+    'Spare4',
+    'Spare5',
+    'Spare6'
+]
+
+const Settings = [
+    'Spare7',
+    'Spare8',
+    'Spare9'
+]
+
+const mainLinksMockdata = [
+    { icon: IconHome2, label: 'Home', selectLink: Home },
+    { icon: IconGauge, label: 'Dashboard', selectLink: Dashboard },
+    { icon: IconDeviceDesktopAnalytics, label: 'Analytics', selectLink: Analytics },
+    { icon: IconUser, label: 'Account', selectLink: Account },
+    { icon: IconSettings, label: 'Settings', selectLink: Settings },
+]
+
+
 
 const Navigation = () => {
-    const [active, setActive] = useState('Releases')
-    const [activeLink, setActiveLink] = useState('Settings')
+    const [active, setActive] = useState('Home')
+    const [activeLink, setActiveLink] = useState('Home')
+    const [selectLink, setSelectLink] = useState(Home)
 
     const mainLinks = mainLinksMockdata.map((link) => (
         <Tooltip
@@ -49,7 +62,11 @@ const Navigation = () => {
             key={link.label}
         >
             <UnstyledButton
-                onClick={() => setActive(link.label)}
+                onClick={() => {
+                    setActive(link.label)
+                    setSelectLink(link.selectLink)
+                }
+                }
                 className={classes.mainLink}
                 data-active={link.label === active || undefined}
             >
@@ -58,7 +75,7 @@ const Navigation = () => {
         </Tooltip>
     ))
 
-    const links = linksMockdata.map((link) => (
+    const links = (data) => data.map((link) => (
         <a
             className={classes.link}
             data-active={activeLink === link || undefined}
@@ -86,8 +103,7 @@ const Navigation = () => {
                     <Title order={4} className={classes.title}>
                         {active}
                     </Title>
-
-                    {links}
+                    {links(selectLink)}
                 </div>
             </div>
         </nav>
