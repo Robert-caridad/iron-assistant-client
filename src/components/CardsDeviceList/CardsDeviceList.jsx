@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { Grid, GridCol } from "@mantine/core"
 import axios from "axios"
-import CardArea from "../CardArea/CardArea"
+import CardDevice from "../CardDevice/CardDevice"
 
-const CardsAresList = () => {
+const CardsDeviceList = () => {
 
     const [Cards, setCards] = useState([])
 
@@ -14,7 +14,7 @@ const CardsAresList = () => {
     const fetchCards = () => {
 
         axios
-            .get(`${import.meta.env.VITE_APP_API_URL}/api/areas`)
+            .get(`${import.meta.env.VITE_APP_API_URL}/api/devices`)
             .then(({ data }) => setCards(data))
             .catch(err => console.log(err))
     }
@@ -24,8 +24,8 @@ const CardsAresList = () => {
             {
                 Cards.map(elm => {
                     return (
-                        <GridCol span={3}>
-                            <CardArea {...elm} key={elm._id} />
+                        <GridCol span={3} key={elm._id}>
+                            <CardDevice {...elm} />
                         </GridCol>
                     )
                 })
@@ -34,4 +34,4 @@ const CardsAresList = () => {
     )
 }
 
-export default CardsAresList
+export default CardsDeviceList
