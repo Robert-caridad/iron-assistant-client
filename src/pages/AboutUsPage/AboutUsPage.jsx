@@ -10,7 +10,6 @@ const AboutUsPage = () => {
             <Footer />
         </>
     )
-
 }
 
 export default AboutUsPage

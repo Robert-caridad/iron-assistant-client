@@ -13,7 +13,6 @@ class DevicesServices {
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
-
             return config
         })
 
@@ -21,6 +20,10 @@ class DevicesServices {
 
     getAllDevices() {
         return this.axiosApp.get('')
+    }
+
+    getAvailableDevices() {
+        return this.axiosApp.get('/available')
     }
 
     searchDevices(query) {

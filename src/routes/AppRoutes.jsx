@@ -7,10 +7,11 @@ import ErrorPage from '../pages/ErrorPage/Errorpage'
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage'
 import FaqPage from '../pages/FaqPage/FaqPage'
 import HomePage from '../pages/HomePage/HomePage'
-import HomePageDashBoard from '../pages/DashBoard/HomePageDashBoard/HomePageDashBoard'
+
 import DevicesPageDashboard from '../pages/Dashboard/DevicesPageDashboard/DevicesPageDashboard'
 import AreasPageDashboard from '../pages/Dashboard/AreasPageDashboard/AreasPageDashboard'
 import AutomationsPageDashboard from '../pages/Dashboard/AutomationsPageDashboard/AutomationsPageDashboard'
+import HomePageDashboard from '../pages/DashBoard/HomePageDashBoard/HomePageDashBoard'
 
 
 const AppRoutes = () => {
@@ -24,7 +25,7 @@ const AppRoutes = () => {
                 <Route path='/faq' element={<FaqPage />} />
 
                 <Route element={<PrivateRouter />}>
-                    <Route path='/dashboard/home' element={<HomePageDashBoard />} />
+                    <Route path='/dashboard/home' element={<HomePageDashboard />} />
                     <Route path='/dashboard/devices' element={<DevicesPageDashboard />} />
                     <Route path='/dashboard/areas' element={<AreasPageDashboard />} />
                     <Route path='/dashboard/automations' element={<AutomationsPageDashboard />} />

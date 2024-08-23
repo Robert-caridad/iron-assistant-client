@@ -15,12 +15,27 @@ const NewDeviceForm = () => {
             icon: '',
             deviceType: '',
             logicFuction: '',
+            brightness: null,
+            temperature: null,
         },
         validate: {
             name: (value) => (value.length < 0 ? 'Require Name' : null),
             icon: (value) => (value.length < 0 ? 'Password must have at least 2 character' : null),
+            deviceType: (value) => value === '' ? 'Device type is required' : null
         }
     })
+
+    const handleDeviceTypeChange = (value) => {
+        form.setFieldValue('deviceType', value);
+
+        if (value === 'light') {
+            form.setFieldValue('brightness', 0);
+            form.setFieldValue('temperature', null);
+        } else if (value === 'thermostat') {
+            form.setFieldValue('temperature', 0);
+            form.setFieldValue('brightness', null);
+        }
+    }
 
     const handleFormSubmit = deviceData => {
 
@@ -43,12 +58,7 @@ const NewDeviceForm = () => {
                     data={['light', 'thermostat']}
                     key={form.key('deviceType')}
                     {...form.getInputProps('deviceType')}
-                /> <Select
-                    label="Select fuction"
-                    placeholder="Pick value"
-                    data={['On/Off', 'Dimmer']}
-                    key={form.key('logicFuction')}
-                    {...form.getInputProps('logicFuction')}
+                    onChange={handleDeviceTypeChange}
                 />
                 <Button type="submit" fullWidth mt="xl" size="md">
                     Create

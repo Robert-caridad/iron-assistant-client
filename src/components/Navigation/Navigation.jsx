@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { UnstyledButton, Tooltip, Title, rem } from '@mantine/core'
+import { UnstyledButton, Tooltip, Title, rem, Anchor } from '@mantine/core'
 import {
     IconHome2,
     IconGauge,
@@ -9,7 +9,7 @@ import {
 } from '@tabler/icons-react'
 import { MantineLogo } from '@mantinex/mantine-logo'
 import classes from './Navigation.module.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Home = [
     { nameLink: 'Home', route: '/dashboard/home' },
@@ -99,7 +99,9 @@ const Navigation = () => {
             <div className={classes.wrapper}>
                 <div className={classes.aside}>
                     <div className={classes.logo}>
-                        <MantineLogo type="mark" size={30} />
+                        <Anchor component={Link} to='/' >
+                            <MantineLogo type="mark" size={30} />
+                        </Anchor>
                     </div>
                     {mainLinks}
                 </div>

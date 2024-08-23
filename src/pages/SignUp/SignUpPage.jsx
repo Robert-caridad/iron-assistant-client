@@ -1,4 +1,3 @@
-// TODO: RESSTRUCTURAR COMPONENTES DE P'AGINA
 import { Link } from 'react-router-dom'
 import {
     Paper,

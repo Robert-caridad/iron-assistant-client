@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-class AuthServices {
+class AutomationsServices {
     constructor() {
 
         this.axiosApp = axios.create({
-            baseURL: `${import.meta.env.VITE_APP_API_URL}/api`
+            baseURL: `${import.meta.env.VITE_APP_API_URL}/api/automations`
         })
 
         this.axiosApp.interceptors.request.use(config => {
@@ -13,22 +13,28 @@ class AuthServices {
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
             }
-
             return config
         })
     }
 
-    signupUser(userData) {
-        return this.axiosApp.post('/auth/signup', userData)
+    getAutomations() {
+        return this.axiosApp.post('/')
     }
 
-    loginUser(userData) {
-        return this.axiosApp.post('auth/login', userData)
+    getAutomationById(idAutomation) {
+        return this.axiosApp.get(`/${idAutomation}`, idAutomation)
     }
 
-    verifyToken() {
-        return this.axiosApp.get('/auth/verify')
+    postNewAutomations(automationData) {
+        return this.axiosApp.post('/', automationData)
+    }
+
+    putEditAutomationsById(idDevice, automationData) {
+        return this.axiosApp.put(`/${idDevice}`, automationData)
+    }
+    deleteAutomationsById() {
+        return this.axiosApp.delete('/:id')
     }
 }
 
-export default new AuthServices()
+export default new AutomationsServices()

@@ -7,14 +7,11 @@ import {
 } from '@mantine/core'
 import AreasServices from '../../services/areas.services'
 import { useEffect, useState } from 'react'
-import devicesServices from '../../services/devices.services'
 import DevicesServices from '../../services/devices.services'
-
 
 const NewAreaForm = () => {
 
     const [Alldevices, setDevices] = useState([])
-    const [loading, setLoading] = useState(true)
 
     const form = useForm({
         mode: 'uncontrolled',
@@ -25,8 +22,7 @@ const NewAreaForm = () => {
             picture: ''
         },
         validate: {
-            name: (value) => (value.length < 0 ? 'Require Name' : null),
-            icon: (value) => (value.length < 0 ? 'Password must have at least 2 character' : null),
+            name: (value) => (value.length === 0 ? 'Require Name' : null),
         }
     })
 
@@ -34,29 +30,32 @@ const NewAreaForm = () => {
         fetchDevices()
     }, [])
 
-
     const fetchDevices = () => {
         DevicesServices
-            .getAllDevices()
-            .then((Devices) => {
-                const deviceNames = Devices.data.map(nameDevice => nameDevice.name)
-                setDevices(deviceNames)
+            .getAvailableDevices()
+            .then((devices) => {
+                const devicedata = devices.data.map(device => ({ value: `${device._id}`, label: `${device.name}` }))
+                setDevices(devicedata)
             })
             .catch(err => console.log(err))
     }
 
-    const handleFormSubmit = AreaData => {
+    const handleFormSubmit = areaData => {
 
         AreasServices
-            .postNewArea(AreaData)
-            .then(() => {
+            .postNewArea(areaData)
+            .then((area) => {
+                Alldevices.forEach(device => {
+                    DevicesServices
+                        .putEditDeviceById(device.value, { "area": area.data._id })
+                })
                 alert("Created Area")
             })
             .catch(err => console.log(err))
     }
 
     return (
-        <Fieldset legend="Device information">
+        <Fieldset legend="Area information">
             <form onSubmit={form.onSubmit((values) => handleFormSubmit(values))}>
                 <TextInput label="Name" placeholder="Name" size="md" key={form.key('name')} {...form.getInputProps('name')} />
                 <TextInput label="Icon" placeholder="Icon" size="md" key={form.key('icon')} {...form.getInputProps('icon')} />
@@ -65,11 +64,11 @@ const NewAreaForm = () => {
                     <MultiSelect
                         label="Select devices"
                         placeholder="Pick devices"
-                        data={Alldevices} // Usa los datos cargados
-                        {...form.getInputProps('devicesSelected')}
+                        data={Alldevices}
+                        {...form.getInputProps('devices')}
                     />
                 ) : (
-                    <p>Loading devices...</p> // Mensaje o componente de carga
+                    <p>Loading devices...</p>
                 )}
                 <Button type="submit" fullWidth mt="xl" size="md">
                     Create
