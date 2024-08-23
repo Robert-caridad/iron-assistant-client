@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom'
-
 import PrivateRouter from './PrivateRouters'
 import SignUpPage from '../pages/SignUp/SignUpPage'
 import LoginPage from '../pages/LoginPage/LoginPages'
@@ -7,11 +6,10 @@ import ErrorPage from '../pages/ErrorPage/Errorpage'
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage'
 import FaqPage from '../pages/FaqPage/FaqPage'
 import HomePage from '../pages/HomePage/HomePage'
-import HomePageDashBoard from '../pages/DashBoard/HomePageDashBoard/HomePageDashBoard'
 import DevicesPageDashboard from '../pages/Dashboard/DevicesPageDashboard/DevicesPageDashboard'
 import AreasPageDashboard from '../pages/Dashboard/AreasPageDashboard/AreasPageDashboard'
 import AutomationsPageDashboard from '../pages/Dashboard/AutomationsPageDashboard/AutomationsPageDashboard'
-
+import HomePagesDashboard from '../pages/Dashboard/HomePageDashboard/HomePageDashboard'
 
 const AppRoutes = () => {
     return (
@@ -24,7 +22,7 @@ const AppRoutes = () => {
                 <Route path='/faq' element={<FaqPage />} />
 
                 <Route element={<PrivateRouter />}>
-                    <Route path='/dashboard/home' element={<HomePageDashBoard />} />
+                    <Route path='/dashboard/home' element={<HomePagesDashboard />} />
                     <Route path='/dashboard/devices' element={<DevicesPageDashboard />} />
                     <Route path='/dashboard/areas' element={<AreasPageDashboard />} />
                     <Route path='/dashboard/automations' element={<AutomationsPageDashboard />} />
