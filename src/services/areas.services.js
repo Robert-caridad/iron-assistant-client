@@ -36,8 +36,8 @@ class AreasServices {
     putEditAreaById(idDevice, deviceData) {
         return this.axiosApp.put(`/${idDevice}`, deviceData)
     }
-    deleteAreaById() {
-        return this.axiosApp.delete('/:id')
+    deleteAreaById(id) {
+        return this.axiosApp.delete(`/${id}`)
     }
 }
 

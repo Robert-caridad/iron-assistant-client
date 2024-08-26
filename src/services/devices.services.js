@@ -41,8 +41,8 @@ class DevicesServices {
     putEditDeviceById(idDevice, deviceData) {
         return this.axiosApp.put(`/${idDevice}`, deviceData)
     }
-    deleteDeviceById() {
-        return this.axiosApp.delete('/:id')
+    deleteDeviceById(deviceId) {
+        return this.axiosApp.delete(`/${deviceId}`)
     }
 }
 

@@ -1,6 +1,5 @@
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
-import { useEffect, useState } from 'react';
 
 const ModalForm = ({ name, form }) => {
 

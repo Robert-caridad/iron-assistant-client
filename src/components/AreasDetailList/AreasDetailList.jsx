@@ -1,24 +1,15 @@
 import cx from 'clsx'
-import { Text } from '@mantine/core'
-import { useListState } from '@mantine/hooks'
+import { Text, Button, Box } from '@mantine/core'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import classes from './AreasDetailList.module.css'
-import { useEffect, useState } from "react"
 import AreasServices from '../../services/areas.services'
+import { IconTrash } from '@tabler/icons-react'
 
-const AreasDetailList = () => {
-    const [areasData, setAreasData] = useState([])
-    const [state, handlers] = useListState(areasData)
 
-    useEffect(() => {
-        fetchAreas()
-    }, [])
+const AreasDetailList = ({ modalEdit, areasData, handleOnDragEnd }) => {
 
-    const fetchAreas = () => {
-        AreasServices
-            .getAreas()
-            .then(({ data }) => { setAreasData(data) })
-            .catch(err => console.log(err))
+    const handlerForEdit = (id) => {
+        modalEdit(id)
     }
 
     const items = areasData.map((item, index) => (
@@ -36,6 +27,8 @@ const AreasDetailList = () => {
                         <Text c="dimmed" size="sm">
                             Position: {item.name} • Mass: {item.name}
                         </Text>
+                        <Button variant="default" onClick={() => handlerForEdit(item._id)}>Edit</Button>
+
                     </div>
                 </div>
             )}
@@ -44,9 +37,7 @@ const AreasDetailList = () => {
 
     return (
         <DragDropContext
-            onDragEnd={({ destination, source }) =>
-                handlers.reorder({ from: source.index, to: destination?.index || 0 })
-            }
+            onDragEnd={handleOnDragEnd}
         >
             <Droppable droppableId="dnd-list" direction="vertical">
                 {(provided) => (
@@ -54,6 +45,26 @@ const AreasDetailList = () => {
                         {items}
                         {provided.placeholder}
                     </div>
+                )}
+            </Droppable>
+
+            <Droppable droppableId="trash-bin">
+                {(provided) => (
+                    <Box
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                        style={{
+                            marginTop: '20px',
+                            padding: '20px',
+                            backgroundColor: '#f5f5f5',
+                            textAlign: 'center',
+                            borderRadius: '8px',
+                            border: '2px dashed #ccc',
+                        }}
+                    >
+                        <IconTrash size={48} color="red" />
+                        <Text>Drop here to delete</Text>
+                    </Box>
                 )}
             </Droppable>
         </DragDropContext>

@@ -5,9 +5,9 @@ import {
     Fieldset,
     MultiSelect
 } from '@mantine/core'
-import AreasServices from '../../services/areas.services'
+import areasServices from '../../services/areas.services'
 import { useEffect, useState } from 'react'
-import DevicesServices from '../../services/devices.services'
+import devicesServices from '../../services/devices.services'
 
 const NewAreaForm = () => {
 
@@ -19,7 +19,8 @@ const NewAreaForm = () => {
             name: '',
             icon: '',
             floor: '',
-            picture: ''
+            picture: '',
+            selectedDevices: []
         },
         validate: {
             name: (value) => (value.length === 0 ? 'Require Name' : null),
@@ -31,7 +32,7 @@ const NewAreaForm = () => {
     }, [])
 
     const fetchDevices = () => {
-        DevicesServices
+        devicesServices
             .getAvailableDevices()
             .then((devices) => {
                 const devicedata = devices.data.map(device => ({ value: `${device._id}`, label: `${device.name}` }))
@@ -44,16 +45,16 @@ const NewAreaForm = () => {
 
         // TODO: RESOLVER TRANSACCION MULTIPLE DESDE LA API
 
-        AreasServices
+        areasServices
             .postNewArea(areaData)
             .then((area) => {
-                alldevices.forEach(device => {
-                    DevicesServices
-                        .putEditDeviceById(device.value, { "area": area.data._id })
-                        .then(() => alert("Created Area"))
+                area.data.devices.forEach(device => {
+                    devicesServices
+                        .putEditDeviceById(device._id, { "area": area.data._id })
+                        .then()
                         .catch(err => console.log(err))
                 })
-
+                alert("Created Area")
             })
             .catch(err => console.log(err))
     }
@@ -69,7 +70,7 @@ const NewAreaForm = () => {
                         label="Select devices"
                         placeholder="Pick devices"
                         data={alldevices}
-                        {...form.getInputProps('devices')}
+                        {...form.getInputProps('selectedDevices')}
                     />
                 ) : (
                     <p>Loading devices...</p>

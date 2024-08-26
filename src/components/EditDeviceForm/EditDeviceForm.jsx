@@ -6,27 +6,21 @@ import {
     Select
 } from '@mantine/core'
 import DevicesServices from '../../services/devices.services'
-import { useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react'
 
-
-const EditDeviceForm = ({ _id }) => {
-
-    const [device, setDevice] = useState()
+const EditDeviceForm = ({ id, closeModalEdit }) => {
 
     const form = useForm({
         mode: 'uncontrolled',
         initialValues: {
             name: '',
             icon: '',
-            deviceType: '',
-            logicFuction: '',
-            brightness: null,
-            temperature: null,
+            floor: '',
+            picture: '',
+            selectedDevices: []
         },
         validate: {
-            name: (value) => (value.length < 0 ? 'Require Name' : null),
-            deviceType: (value) => value === '' ? 'Device type is required' : null
+            name: (value) => (value.length === 0 ? 'Require Name' : null),
         }
     })
 
@@ -36,9 +30,16 @@ const EditDeviceForm = ({ _id }) => {
 
     const fetchDevice = () => {
         DevicesServices
-            .getDeviceById(_id)
+            .getDeviceById(id)
             .then(({ data }) => {
-                setDevice(data)
+                form.setValues({
+                    name: data.name || '',
+                    icon: data.icon || '',
+                    deviceType: data.deviceType || '',
+                    logicFuction: data.logicFuction || '',
+                    brightness: data.brightness || null,
+                    temperature: data.temperature || null,
+                });
             })
             .catch(err => console.log(err))
     }
@@ -58,9 +59,9 @@ const EditDeviceForm = ({ _id }) => {
     const handleFormSubmit = deviceData => {
 
         DevicesServices
-            .putEditDeviceById(_id, deviceData)
+            .putEditDeviceById(id, deviceData)
             .then(
-                alert("update")
+                closeModalEdit()
             )
             .catch(err => console.log(err))
     }
@@ -68,7 +69,7 @@ const EditDeviceForm = ({ _id }) => {
     return (
         <Fieldset legend="Device information">
             <form onSubmit={form.onSubmit((values) => handleFormSubmit(values))}>
-                <TextInput label="Name" placeholder="Name" size="md" value={device.name} key={form.key('name')} {...form.getInputProps('name')} />
+                <TextInput label="Name" placeholder="Name" size="md" key={form.key('name')} {...form.getInputProps('name')} />
                 <TextInput label="Icon" placeholder="Icon" size="md" key={form.key('icon')} {...form.getInputProps('icon')} />
                 <Select
                     label="Select device type"
@@ -79,7 +80,7 @@ const EditDeviceForm = ({ _id }) => {
                     onChange={handleDeviceTypeChange}
                 />
                 <Button type="submit" fullWidth mt="xl" size="md">
-                    Create
+                    Edit
                 </Button>
             </form>
         </Fieldset>
