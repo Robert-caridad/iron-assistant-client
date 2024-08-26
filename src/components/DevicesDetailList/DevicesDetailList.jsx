@@ -1,12 +1,12 @@
 import cx from 'clsx';
-import { Button, Text } from '@mantine/core';
+import { Text } from '@mantine/core';
 import { useListState } from '@mantine/hooks';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import classes from './CardsDeviceDetail.module.css';
+import classes from './DevicesDetailList.module.css';
 import { useEffect, useState } from 'react';
 import DevicesServices from '../../services/devices.services'
 
-const CardsDeviceDetail = () => {
+const DevicesDetailList = () => {
     const [devicesData, setDevicesData] = useState([])
     const [state, handlers] = useListState(devicesData);
 
@@ -17,12 +17,7 @@ const CardsDeviceDetail = () => {
     const fetchDevices = () => {
         DevicesServices
             .getAllDevices()
-            .then(({ data }) => {
-                // TODO: REVISAR
-                const devicesdata = data.map(device => ({ value: `${device._id}`, name: `${device.name}`, area: `${device.area}` }))
-                setDevicesData(devicesdata)
-
-            })
+            .then(({ data }) => { setDevicesData(data) })
             .catch(err => console.log(err))
     }
 
@@ -42,7 +37,6 @@ const CardsDeviceDetail = () => {
                             Area: {item.area} • Value: {item.value}
                         </Text>
                     </div>
-                    <Button>Edit</Button>
                 </div>
             )}
         </Draggable>
@@ -66,4 +60,4 @@ const CardsDeviceDetail = () => {
     );
 }
 
-export default CardsDeviceDetail
+export default DevicesDetailList

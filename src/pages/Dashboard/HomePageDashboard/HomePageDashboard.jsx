@@ -1,14 +1,17 @@
-import CardsAreaList from "../../../components/CardsAreaList/CardsAreaList"
-import CardsAutomationList from "../../../components/CardsAutomationList/CardsAutomationList"
+import AreasList from "../../../components/AreasList/AreasList"
+import AutomationsList from "../../../components/AutomationsList/AutomationsList"
+import DevicesList from "../../../components/DevicesList/DevicesList"
 
 
 const HomePagesDashboard = () => {
     return (
         <div>
-            <h1>Dash Board</h1>
-            <CardsAreaList />
-            <h2>automations</h2>
-            <CardsAutomationList />
+            <h2>Areas</h2>
+            <AreasList />
+            <h2>Devices</h2>
+            <DevicesList />
+            <h2>Automations</h2>
+            <AutomationsList />
         </div>
     )
 }

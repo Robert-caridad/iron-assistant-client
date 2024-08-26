@@ -1,4 +1,4 @@
-import CardsDeviceDetail from '../../../components/CardsDeviceDetail/CardsDeviceDetail';
+import DevicesDetailList from '../../../components/DevicesDetailList/DevicesDetailList';
 import ModalForm from '../../../components/ModalForm/ModalForm';
 import NewDeviceForm from '../../../components/NewDeviceForm/NewDeviceForm';
 
@@ -8,7 +8,7 @@ const DevicesPageDashboard = () => {
         <div>
             <p>Device Page List</p>
             <ModalForm name="Devices" form={<NewDeviceForm />} />
-            <CardsDeviceDetail />
+            <DevicesDetailList />
         </div>
     )
 }

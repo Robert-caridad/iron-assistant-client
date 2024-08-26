@@ -1,39 +1,28 @@
-import cx from 'clsx';
-import { Text } from '@mantine/core';
-import { useListState } from '@mantine/hooks';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import classes from './CardsAutomationDetail.module.css';
+import cx from 'clsx'
+import { Text } from '@mantine/core'
+import { useListState } from '@mantine/hooks'
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
+import classes from './AreasDetailList.module.css'
 import { useEffect, useState } from "react"
-import axios from "axios"
+import AreasServices from '../../services/areas.services'
 
-const data = [
-    { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
-    { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
-    { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
-    { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
-    { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
-];
-
-const CardsAutomationDetail = () => {
-
-    const [Cards, setCards] = useState([])
+const AreasDetailList = () => {
+    const [areasData, setAreasData] = useState([])
+    const [state, handlers] = useListState(areasData)
 
     useEffect(() => {
-        fetchCards()
+        fetchAreas()
     }, [])
 
-    const fetchCards = () => {
-
-        axios
-            .get(`${import.meta.env.VITE_APP_API_URL}/api/areas`)
-            .then(({ data }) => setCards(data))
+    const fetchAreas = () => {
+        AreasServices
+            .getAreas()
+            .then(({ data }) => { setAreasData(data) })
             .catch(err => console.log(err))
-
     }
-    const [state, handlers] = useListState(data);
 
-    const items = state.map((item, index) => (
-        <Draggable key={item.symbol} index={index} draggableId={item.symbol}>
+    const items = areasData.map((item, index) => (
+        <Draggable key={item.name} index={index} draggableId={item.name}>
             {(provided, snapshot) => (
                 <div
                     className={cx(classes.item, { [classes.itemDragging]: snapshot.isDragging })}
@@ -45,13 +34,13 @@ const CardsAutomationDetail = () => {
                     <div>
                         <Text>{item.name}</Text>
                         <Text c="dimmed" size="sm">
-                            Position: {item.position} • Mass: {item.mass}
+                            Position: {item.name} • Mass: {item.name}
                         </Text>
                     </div>
                 </div>
             )}
         </Draggable>
-    ));
+    ))
 
     return (
         <DragDropContext
@@ -68,7 +57,7 @@ const CardsAutomationDetail = () => {
                 )}
             </Droppable>
         </DragDropContext>
-    );
+    )
 }
 
-export default CardsAutomationDetail
+export default AreasDetailList
