@@ -11,7 +11,7 @@ import DevicesServices from '../../services/devices.services'
 
 const NewAreaForm = () => {
 
-    const [Alldevices, setDevices] = useState([])
+    const [alldevices, setDevices] = useState([])
 
     const form = useForm({
         mode: 'uncontrolled',
@@ -42,14 +42,18 @@ const NewAreaForm = () => {
 
     const handleFormSubmit = areaData => {
 
+        // TODO: RESOLVER TRANSACCION MULTIPLE DESDE LA API
+
         AreasServices
             .postNewArea(areaData)
             .then((area) => {
-                Alldevices.forEach(device => {
+                alldevices.forEach(device => {
                     DevicesServices
                         .putEditDeviceById(device.value, { "area": area.data._id })
+                        .then(() => alert("Created Area"))
+                        .catch(err => console.log(err))
                 })
-                alert("Created Area")
+
             })
             .catch(err => console.log(err))
     }
@@ -60,11 +64,11 @@ const NewAreaForm = () => {
                 <TextInput label="Name" placeholder="Name" size="md" key={form.key('name')} {...form.getInputProps('name')} />
                 <TextInput label="Icon" placeholder="Icon" size="md" key={form.key('icon')} {...form.getInputProps('icon')} />
                 <TextInput label="Floor" placeholder="Floor" size="md" key={form.key('floor')} {...form.getInputProps('floor')} />
-                {Alldevices.length > 0 ? (
+                {alldevices.length > 0 ? (
                     <MultiSelect
                         label="Select devices"
                         placeholder="Pick devices"
-                        data={Alldevices}
+                        data={alldevices}
                         {...form.getInputProps('devices')}
                     />
                 ) : (

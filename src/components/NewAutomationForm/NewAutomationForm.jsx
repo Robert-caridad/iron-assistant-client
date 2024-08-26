@@ -11,7 +11,7 @@ import DevicesServices from '../../services/devices.services'
 
 const NewAutomationForm = () => {
 
-    const [Alldevices, setDevices] = useState([])
+    const [alldevices, setDevices] = useState([])
 
     const form = useForm({
         mode: 'uncontrolled',
@@ -52,11 +52,11 @@ const NewAutomationForm = () => {
             <form onSubmit={form.onSubmit((values) => handleFormSubmit(values))}>
                 <TextInput label="Name" placeholder="Name" size="md" key={form.key('name')} {...form.getInputProps('name')} />
                 <TextInput label="Picture" placeholder="Picture" size="md" key={form.key('picture')} {...form.getInputProps('picture')} />
-                {Alldevices.length > 0 ? (
+                {alldevices.length > 0 ? (
                     <MultiSelect
                         label="Select devices"
                         placeholder="Pick devices"
-                        data={Alldevices}
+                        data={alldevices}
                         {...form.getInputProps('devices')}
                     />
                 ) : (

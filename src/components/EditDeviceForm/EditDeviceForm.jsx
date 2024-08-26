@@ -6,8 +6,13 @@ import {
     Select
 } from '@mantine/core'
 import DevicesServices from '../../services/devices.services'
+import { useState } from 'react'
+import { useParams } from 'react-router-dom';
 
-const EditDeviceForm = () => {
+
+const EditDeviceForm = ({ _id }) => {
+
+    const [device, setDevice] = useState()
 
     const form = useForm({
         mode: 'uncontrolled',
@@ -21,10 +26,22 @@ const EditDeviceForm = () => {
         },
         validate: {
             name: (value) => (value.length < 0 ? 'Require Name' : null),
-            icon: (value) => (value.length < 0 ? 'Password must have at least 2 character' : null),
             deviceType: (value) => value === '' ? 'Device type is required' : null
         }
     })
+
+    useEffect(() => {
+        fetchDevice()
+    }, [])
+
+    const fetchDevice = () => {
+        DevicesServices
+            .getDeviceById(_id)
+            .then(({ data }) => {
+                setDevice(data)
+            })
+            .catch(err => console.log(err))
+    }
 
     const handleDeviceTypeChange = (value) => {
         form.setFieldValue('deviceType', value);
@@ -41,17 +58,17 @@ const EditDeviceForm = () => {
     const handleFormSubmit = deviceData => {
 
         DevicesServices
-            .postNewDevice(deviceData)
-            .then(() => {
-                alert("Created")
-            })
+            .putEditDeviceById(_id, deviceData)
+            .then(
+                alert("update")
+            )
             .catch(err => console.log(err))
     }
 
     return (
         <Fieldset legend="Device information">
             <form onSubmit={form.onSubmit((values) => handleFormSubmit(values))}>
-                <TextInput label="Name" placeholder="Name" size="md" key={form.key('name')} {...form.getInputProps('name')} />
+                <TextInput label="Name" placeholder="Name" size="md" value={device.name} key={form.key('name')} {...form.getInputProps('name')} />
                 <TextInput label="Icon" placeholder="Icon" size="md" key={form.key('icon')} {...form.getInputProps('icon')} />
                 <Select
                     label="Select device type"

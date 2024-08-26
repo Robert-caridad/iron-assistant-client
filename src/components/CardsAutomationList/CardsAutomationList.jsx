@@ -5,7 +5,7 @@ import CardAutomation from "../CardAutomation/CardAutomation"
 
 const CardsAutomationList = () => {
 
-    const [Cards, setCards] = useState([])
+    const [cards, setCards] = useState([])
 
     useEffect(() => {
         fetchCards()
@@ -22,7 +22,7 @@ const CardsAutomationList = () => {
     return (
         <Grid>
             {
-                // Cards.map(elm => {
+                // cards.map(elm => {
                 //     return (
                 //         <GridCol span={3} key={elm._id}>
                 //             <CardAutomation {...elm} />

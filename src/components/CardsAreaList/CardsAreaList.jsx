@@ -5,7 +5,7 @@ import CardArea from "../CardArea/CardArea"
 
 const CardsAreaList = () => {
 
-    const [Cards, setCards] = useState([])
+    const [cards, setCards] = useState([])
 
     useEffect(() => {
         // fetchCards()
@@ -21,7 +21,7 @@ const CardsAreaList = () => {
     return (
         <Grid>
             {/* {
-                Cards.map(elm => {
+                cards.map(elm => {
                     return (
                         <GridCol span={3} key={elm._id}>
                             <CardArea {...elm} />

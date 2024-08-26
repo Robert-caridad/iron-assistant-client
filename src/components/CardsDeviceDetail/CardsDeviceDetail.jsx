@@ -1,5 +1,5 @@
 import cx from 'clsx';
-import { Text } from '@mantine/core';
+import { Button, Text } from '@mantine/core';
 import { useListState } from '@mantine/hooks';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import classes from './CardsDeviceDetail.module.css';
@@ -17,9 +17,11 @@ const CardsDeviceDetail = () => {
     const fetchDevices = () => {
         DevicesServices
             .getAllDevices()
-            .then((devices) => {
-                const devicesdata = devices.data.map(device => ({ value: `${device._id}`, name: `${device.name}`, area: `${device.area}` }))
+            .then(({ data }) => {
+                // TODO: REVISAR
+                const devicesdata = data.map(device => ({ value: `${device._id}`, name: `${device.name}`, area: `${device.area}` }))
                 setDevicesData(devicesdata)
+
             })
             .catch(err => console.log(err))
     }
@@ -40,6 +42,7 @@ const CardsDeviceDetail = () => {
                             Area: {item.area} • Value: {item.value}
                         </Text>
                     </div>
+                    <Button>Edit</Button>
                 </div>
             )}
         </Draggable>
