@@ -10,6 +10,7 @@ import DevicesPageDashboard from '../pages/Dashboard/DevicesPageDashboard/Device
 import AreasPageDashboard from '../pages/Dashboard/AreasPageDashboard/AreasPageDashboard'
 import AutomationsPageDashboard from '../pages/Dashboard/AutomationsPageDashboard/AutomationsPageDashboard'
 import HomePagesDashboard from '../pages/Dashboard/HomePageDashboard/HomePageDashboard'
+import TechnologiesPage from '../pages/TechnologiesPage/TechnologiesPage'
 
 const AppRoutes = () => {
     return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/about' element={<AboutUsPage />} />
                 <Route path='/faq' element={<FaqPage />} />
+                <Route path='/technologies' element={<TechnologiesPage />} />
 
                 <Route element={<PrivateRouter />}>
                     <Route path='/dashboard/home' element={<HomePagesDashboard />} />
