@@ -1,30 +1,27 @@
-import cx from 'clsx';
-import { Text } from '@mantine/core';
-import { useListState } from '@mantine/hooks';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import classes from './CardsDeviceDetail.module.css';
-import { useEffect, useState } from 'react';
-import DevicesServices from '../../services/devices.services'
+import cx from 'clsx'
+import { Button, Text } from '@mantine/core'
+import { useListState } from '@mantine/hooks'
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
+import classes from './AutomationsDetailList.module.css'
+import { useEffect, useState } from "react"
+import AutomationsServices from '../../services/automations.services'
 
-const CardsDeviceDetail = () => {
-    const [devicesData, setDevicesData] = useState([])
-    const [state, handlers] = useListState(devicesData);
+const AutomationsDetailList = () => {
+    const [automationsData, setAutomations] = useState([])
+    const [state, handlers] = useListState(automationsData)
 
     useEffect(() => {
-        fetchDevices()
+        fetchAutomations()
     }, [])
 
-    const fetchDevices = () => {
-        DevicesServices
-            .getAllDevices()
-            .then((devices) => {
-                const devicesdata = devices.data.map(device => ({ value: `${device._id}`, name: `${device.name}`, area: `${device.area}` }))
-                setDevicesData(devicesdata)
-            })
+    const fetchAutomations = () => {
+        AutomationsServices
+            .getAutomations()
+            .then(({ data }) => setAutomations(data))
             .catch(err => console.log(err))
     }
 
-    const items = devicesData.map((item, index) => (
+    const items = automationsData.map((item, index) => (
         <Draggable key={item.name} index={index} draggableId={item.name}>
             {(provided, snapshot) => (
                 <div
@@ -33,17 +30,17 @@ const CardsDeviceDetail = () => {
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                 >
-                    <Text className={classes.symbol}></Text>
+                    <Text className={classes.symbol}>{item.name}</Text>
                     <div>
                         <Text>{item.name}</Text>
                         <Text c="dimmed" size="sm">
-                            Area: {item.area} • Value: {item.value}
+                            Devices: {item.name} • Funtion: <Button>On/Off </Button>
                         </Text>
                     </div>
                 </div>
             )}
         </Draggable>
-    ));
+    ))
 
     return (
         <DragDropContext
@@ -60,7 +57,7 @@ const CardsDeviceDetail = () => {
                 )}
             </Droppable>
         </DragDropContext>
-    );
+    )
 }
 
-export default CardsDeviceDetail
+export default AutomationsDetailList

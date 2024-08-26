@@ -18,7 +18,7 @@ class AutomationsServices {
     }
 
     getAutomations() {
-        return this.axiosApp.post('/')
+        return this.axiosApp.get('/')
     }
 
     getAutomationById(idAutomation) {

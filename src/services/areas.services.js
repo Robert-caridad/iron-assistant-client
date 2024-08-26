@@ -18,7 +18,7 @@ class AreasServices {
     }
 
     getAreas() {
-        return this.axiosApp.post('/')
+        return this.axiosApp.get('/')
     }
 
     searchAreas(query) {

@@ -2,38 +2,27 @@ import cx from 'clsx';
 import { Text } from '@mantine/core';
 import { useListState } from '@mantine/hooks';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import classes from './CardsAreaDetail.module.css';
-import { useEffect, useState } from "react"
-import axios from "axios"
+import classes from './DevicesDetailList.module.css';
+import { useEffect, useState } from 'react';
+import DevicesServices from '../../services/devices.services'
 
-const data = [
-    { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
-    { position: 7, mass: 14.007, symbol: 'N', name: 'Nitrogen' },
-    { position: 39, mass: 88.906, symbol: 'Y', name: 'Yttrium' },
-    { position: 56, mass: 137.33, symbol: 'Ba', name: 'Barium' },
-    { position: 58, mass: 140.12, symbol: 'Ce', name: 'Cerium' },
-];
-
-const CardsAreaDetail = () => {
-
-    const [Cards, setCards] = useState([])
+const DevicesDetailList = () => {
+    const [devicesData, setDevicesData] = useState([])
+    const [state, handlers] = useListState(devicesData);
 
     useEffect(() => {
-        fetchCards()
+        fetchDevices()
     }, [])
 
-    const fetchCards = () => {
-
-        axios
-            .get(`${import.meta.env.VITE_APP_API_URL}/api/areas`)
-            .then(({ data }) => setCards(data))
+    const fetchDevices = () => {
+        DevicesServices
+            .getAllDevices()
+            .then(({ data }) => { setDevicesData(data) })
             .catch(err => console.log(err))
-
     }
-    const [state, handlers] = useListState(data);
 
-    const items = state.map((item, index) => (
-        <Draggable key={item.symbol} index={index} draggableId={item.symbol}>
+    const items = devicesData.map((item, index) => (
+        <Draggable key={item.name} index={index} draggableId={item.name}>
             {(provided, snapshot) => (
                 <div
                     className={cx(classes.item, { [classes.itemDragging]: snapshot.isDragging })}
@@ -41,11 +30,11 @@ const CardsAreaDetail = () => {
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                 >
-                    <Text className={classes.symbol}>{item.symbol}</Text>
+                    <Text className={classes.symbol}></Text>
                     <div>
                         <Text>{item.name}</Text>
                         <Text c="dimmed" size="sm">
-                            Position: {item.position} • Mass: {item.mass}
+                            Area: {item.area} • Value: {item.value}
                         </Text>
                     </div>
                 </div>
@@ -71,4 +60,4 @@ const CardsAreaDetail = () => {
     );
 }
 
-export default CardsAreaDetail
+export default DevicesDetailList

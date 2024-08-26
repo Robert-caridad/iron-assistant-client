@@ -19,7 +19,7 @@ class DevicesServices {
     }
 
     getAllDevices() {
-        return this.axiosApp.get('')
+        return this.axiosApp.get('/')
     }
 
     getAvailableDevices() {
