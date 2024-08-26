@@ -4,6 +4,7 @@ import classes from './HeroImageBackground.module.css';
 import { Link } from 'react-router-dom';
 
 const HeroImageBackground = () => {
+
     return (
         <div className={classes.wrapper}>
             <Overlay color="#000" opacity={0.65} zIndex={1} />

@@ -8,7 +8,7 @@ import AutomationsServices from '../../services/automations.services'
 
 const AutomationsDetailList = () => {
     const [automationsData, setAutomations] = useState([])
-    const [state, handlers] = useListState(automationsData)
+    // const [state, handlers] = useListState(automationsData)
 
     useEffect(() => {
         fetchAutomations()
@@ -30,11 +30,11 @@ const AutomationsDetailList = () => {
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                 >
-                    <Text className={classes.symbol}>{item.name}</Text>
+                    <Text className={classes.symbol}>{ }</Text>
                     <div>
                         <Text>{item.name}</Text>
                         <Text c="dimmed" size="sm">
-                            Devices: {item.name} • Funtion: <Button>On/Off </Button>
+                            Devices: {item.devices.length} • Funtion: <Button>On/Off </Button>
                         </Text>
                     </div>
                 </div>
