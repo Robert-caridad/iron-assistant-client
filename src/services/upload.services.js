@@ -4,16 +4,14 @@ class UploadServices {
 
     constructor() {
 
-        this.api = axios.create({
-            baseURL: `${process.env.VITE_APP_API_URL}/upload`
+        this.axiosApp = axios.create({
+            baseURL: `${import.meta.env.VITE_APP_API_URL}/api/upload`
         })
     }
 
     uploadimage(imageForm) {
-        return this.api.post('/image', imageForm)
+        return this.axiosApp.post('/image', imageForm)
     }
 }
 
-const uploadServices = new UploadServices()
-
-export default uploadServices
+export default new UploadServices()

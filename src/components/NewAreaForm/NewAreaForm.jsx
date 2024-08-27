@@ -15,10 +15,32 @@ import areasServices from '../../services/areas.services'
 import { useEffect, useState, useRef } from 'react'
 import devicesServices from '../../services/devices.services'
 import classes from './NewAreaForm.module.css';
+import uploadServices from '../../services/upload.services';
+import { Image, SimpleGrid } from '@mantine/core';
 
 const NewAreaForm = () => {
     const theme = useMantineTheme();
     const openRef = useRef(null)
+
+    const [files, setFiles] = useState([]);
+
+    const previews = files.map((file, index) => {
+        const imageUrl = URL.createObjectURL(file);
+        return <Image key={index} src={imageUrl} onLoad={() => URL.revokeObjectURL(imageUrl)} />;
+    });
+
+    const onUpload = () => {
+        setUploadStatus("Uploading....");
+        const formData = new FormData();
+        selectedImages.forEach((image) => {
+            formData.append("file", image);
+        });
+
+        uploadServices
+            .uploadimage(formData)
+            .then()
+            .cach(err => console.log(err))
+    }
 
     const [alldevices, setDevices] = useState([])
 
@@ -49,6 +71,8 @@ const NewAreaForm = () => {
             })
             .catch(err => console.log(err))
     }
+
+
 
     const handleFormSubmit = areaData => {
 
@@ -87,7 +111,7 @@ const NewAreaForm = () => {
                 <div className={classes.wrapper}>
                     <Dropzone
                         openRef={openRef}
-                        onDrop={() => { }}
+                        onDrop={() => { console.log('lol') }}
                         className={classes.dropzone}
                         radius="md"
                         accept={[MIME_TYPES.pdf]}
@@ -125,6 +149,10 @@ const NewAreaForm = () => {
                             </Text>
                         </div>
                     </Dropzone>
+
+                    <SimpleGrid cols={{ base: 1, sm: 4 }} mt={previews.length > 0 ? 'xl' : 0}>
+                        {previews}
+                    </SimpleGrid>
 
                     <Button className={classes.control} size="md" radius="xl" onClick={() => openRef.current?.()}>
                         Select files
