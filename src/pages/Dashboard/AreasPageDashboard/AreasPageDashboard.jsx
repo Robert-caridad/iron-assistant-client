@@ -6,7 +6,7 @@ import { useListState } from '@mantine/hooks'
 import areasServices from '../../../services/areas.services';
 import EditAreaForm from '../../../components/EditAreaForm/EditAreaForm';
 import { useDisclosure } from '@mantine/hooks';
-import { Modal } from '@mantine/core';
+import { Group, Modal } from '@mantine/core';
 
 const AreasPageDashboard = () => {
 
@@ -37,7 +37,6 @@ const AreasPageDashboard = () => {
             .catch(err => console.log(err))
     }
 
-
     const handleOnDragEnd = (result) => {
         const { destination, source } = result
 
@@ -59,11 +58,12 @@ const AreasPageDashboard = () => {
         }
     }
 
-
     return (
         <div>
             <p>Areas Page List</p>
-            <ModalForm name="Area" form={<NewAreaForm />} />
+            <Group pb={20}>
+                <ModalForm name="Area" form={<NewAreaForm />} />
+            </Group>
             <AreasDetailList modalEdit={modalEdit} areasData={areasData} handleOnDragEnd={handleOnDragEnd} />
             <Modal opened={opened} onClose={close} title={`Edit`}>
                 <EditAreaForm id={idArea} closeModalEdit={closeModalEdit} />

@@ -22,9 +22,15 @@ const DevicesDetailList = ({ modalEdit, devicesData, handleOnDragEnd }) => {
                 >
                     <Text className={classes.symbol}></Text>
                     <div>
-                        <Text>{item.name}</Text>
+                        <Text mb={10}>{item.name}</Text>
                         <Text c="dimmed" size="sm" mb={10}>
                             Area: {item.area ? item.area.name : 'No Area Assigned'}
+                        </Text>
+                        <Text c="dimmed" size="sm" mb={10}>
+                            Device Type: {item.deviceType || 'Not defined'}
+                        </Text>
+                        <Text c="dimmed" size="sm" mb={10}>
+                            Created by: {item.ownerEmail || 'Not defined'}
                         </Text>
                         <Button variant="default" onClick={() => handlerForEdit(item._id)}>Edit</Button>
                     </div>

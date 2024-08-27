@@ -1,10 +1,7 @@
 import cx from 'clsx'
 import { Text, Button, Box } from '@mantine/core'
-import { useListState } from '@mantine/hooks'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import classes from './AutomationsDetailList.module.css'
-import { useEffect, useState } from "react"
-import AutomationsServices from '../../services/automations.services'
 import { IconTrash } from '@tabler/icons-react'
 
 const AutomationsDetailList = ({ modalEdit, automationsData, handleOnDragEnd }) => {

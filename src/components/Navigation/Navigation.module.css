@@ -1,4 +1,5 @@
 .navbar {
+    padding: 0;
     background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
     height: rem(750px);
     width: rem(300px);
@@ -27,6 +28,8 @@
 }
 
 .mainLink {
+    padding: 0;
+
     width: rem(44px);
     height: rem(44px);
     border-radius: var(--mantine-radius-md);

@@ -2,7 +2,7 @@ import DevicesDetailList from '../../../components/DevicesDetailList/DevicesDeta
 import ModalForm from '../../../components/ModalForm/ModalForm';
 import NewDeviceForm from '../../../components/NewDeviceForm/NewDeviceForm';
 import { useDisclosure } from '@mantine/hooks';
-import { Modal } from '@mantine/core';
+import { Group, Modal } from '@mantine/core';
 import EditDeviceForm from '../../../components/EditDeviceForm/EditDeviceForm';
 import { useEffect, useState } from 'react'
 import DevicesServices from './../../../services/devices.services'
@@ -64,8 +64,10 @@ const DevicesPageDashboard = () => {
     return (
         <div>
             <p>Device Page List</p>
-            <ModalForm name="Devices" form={<NewDeviceForm />} />
-            <DevicesDetailList modalEdit={modalEdit} devicesData={devicesData} handleOnDragEnd={handleOnDragEnd} />
+            <Group pb={20} >
+                <ModalForm name="Devices" form={<NewDeviceForm />} />
+            </Group>
+            <DevicesDetailList modalEdit={modalEdit} devicesData={devicesData} handleOnDragEnd={handleOnDragEnd} />ß
             <Modal opened={opened} onClose={close} title={`Edit`}>
                 <EditDeviceForm id={idDevice} closeModalEdit={closeModalEdit} />
             </Modal>

@@ -32,7 +32,7 @@ export default function Layout({ children }) {
                 {/* <div>Logo</div> */}
             </AppShell.Header>
 
-            <AppShell.Navbar p="md"><Navigation /></AppShell.Navbar>
+            <AppShell.Navbar><Navigation /></AppShell.Navbar>
 
             <AppShell.Main>{children}</AppShell.Main>
         </AppShell>

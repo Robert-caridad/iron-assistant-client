@@ -93,7 +93,7 @@ const Navigation = () => {
     ))
 
     return (
-        <nav className={classes.navbar}>
+        <nav className={classes.navbar} >
             <div className={classes.wrapper}>
                 <div className={classes.aside}>
                     <div className={classes.logo}>

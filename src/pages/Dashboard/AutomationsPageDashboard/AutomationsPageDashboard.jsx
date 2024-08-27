@@ -3,7 +3,7 @@ import AutomationsDetailList from '../../../components/AutomationsDetailList/Aut
 import ModalForm from '../../../components/ModalForm/ModalForm';
 import NewAutomationForm from '../../../components/NewAutomationForm/NewAutomationForm';
 import { useDisclosure, useListState } from '@mantine/hooks';
-import { Modal } from '@mantine/core';
+import { Group, Modal } from '@mantine/core';
 import EditAutomationForm from '../../../components/EditAutomationForm/EditAutomationForm';
 import automationsServices from '../../../services/automations.services';
 
@@ -61,7 +61,9 @@ const AutomationsPageDashboard = () => {
     return (
         <div>
             <p>Automation Page List</p>
-            <ModalForm name="Automation" form={<NewAutomationForm />} />
+            <Group pb={20}>
+                <ModalForm name="Automation" form={<NewAutomationForm />} />
+            </Group>
             <AutomationsDetailList modalEdit={modalEdit} automationsData={automationsData} handleOnDragEnd={handleOnDragEnd} />
             <Modal opened={opened} onClose={close} title={`Edit`}>
                 <EditAutomationForm id={idAutomation} closeModalEdit={closeModalEdit} />

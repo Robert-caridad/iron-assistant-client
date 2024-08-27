@@ -23,7 +23,10 @@ const AreasDetailList = ({ modalEdit, areasData, handleOnDragEnd }) => {
                     <div>
                         <Text>{item.name}</Text>
                         <Text c="dimmed" size="sm">
-                            Position: {item.name} • Mass: {item.name}
+                            Position: {item.name}
+                        </Text>
+                        <Text c="dimmed" size="sm" mb={10}>
+                            Floor: {item.floor || 'none'} • Devices: {item.devices.length || 'null'}
                         </Text>
                         <Button variant="default" onClick={() => handlerForEdit(item._id)}>Edit</Button>
                     </div>
