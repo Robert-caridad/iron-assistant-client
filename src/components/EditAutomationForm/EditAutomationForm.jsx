@@ -1,4 +1,3 @@
-import { useForm } from '@mantine/form'
 import {
     TextInput,
     Button,
@@ -8,8 +7,10 @@ import {
 import devicesServices from '../../services/devices.services'
 import { useEffect, useState } from 'react'
 import areasServices from '../../services/areas.services'
+import { useForm } from '@mantine/form'
+import automationsServices from '../../services/automations.services'
 
-const EditAreaForm = ({ id, closeModalEdit }) => {
+const EditAutomationForm = ({ id, closeModalEdit }) => {
 
     const [alldevices, setDevices] = useState([])
     const [loading, setLoading] = useState(true)
@@ -34,9 +35,10 @@ const EditAreaForm = ({ id, closeModalEdit }) => {
     }, [])
 
     const fetchArea = () => {
-        areasServices
-            .getAreaById(id)
+        automationsServices
+            .getAutomationById(id)
             .then(({ data }) => {
+                console.log(data)
                 const selectedDeviceIds = data.devices.map(device => device._id)
                 form.setValues({
                     name: data.name || '',
@@ -44,7 +46,7 @@ const EditAreaForm = ({ id, closeModalEdit }) => {
                     floor: data.floor || '',
                     selectedDevices: selectedDeviceIds
                 })
-                return devicesServices.getAvailableDevices()
+                return devicesServices.getAllDevices()
             })
             .then((devicesResponse) => {
                 const devicedata = devicesResponse.data.map(device => ({
@@ -57,9 +59,9 @@ const EditAreaForm = ({ id, closeModalEdit }) => {
             .catch(err => console.log(err))
     }
 
-    const handleFormSubmit = areaData => {
-        areasServices
-            .putEditAreaById(id, areaData)
+    const handleFormSubmit = automationData => {
+        automationsServices
+            .putEditAutomationsById(id, automationData)
             .then(closeModalEdit())
             .catch(err => console.log(err))
     }
@@ -68,15 +70,12 @@ const EditAreaForm = ({ id, closeModalEdit }) => {
         <Fieldset legend="Area information">
             <form onSubmit={form.onSubmit((values) => handleFormSubmit(values))}>
                 <TextInput label="Name" placeholder="Name" size="md" key={form.key('name')} {...form.getInputProps('name')} />
-                <TextInput label="Icon" placeholder="Icon" size="md" key={form.key('icon')} {...form.getInputProps('icon')} />
-                <TextInput label="Floor" placeholder="Floor" size="md" key={form.key('floor')} {...form.getInputProps('floor')} />
                 {loading ? (<p>Loading devices...</p>
                 ) : (
                     <MultiSelect
                         label="Select devices"
                         placeholder="Pick devices"
                         data={alldevices}
-
                         {...form.getInputProps('selectedDevices')}
                     />
                 )}
@@ -88,4 +87,4 @@ const EditAreaForm = ({ id, closeModalEdit }) => {
     )
 }
 
-export default EditAreaForm
+export default EditAutomationForm

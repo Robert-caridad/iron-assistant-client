@@ -1,24 +1,16 @@
 import cx from 'clsx'
-import { Button, Text } from '@mantine/core'
+import { Text, Button, Box } from '@mantine/core'
 import { useListState } from '@mantine/hooks'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import classes from './AutomationsDetailList.module.css'
 import { useEffect, useState } from "react"
 import AutomationsServices from '../../services/automations.services'
+import { IconTrash } from '@tabler/icons-react'
 
-const AutomationsDetailList = () => {
-    const [automationsData, setAutomations] = useState([])
-    // const [state, handlers] = useListState(automationsData)
+const AutomationsDetailList = ({ modalEdit, automationsData, handleOnDragEnd }) => {
 
-    useEffect(() => {
-        fetchAutomations()
-    }, [])
-
-    const fetchAutomations = () => {
-        AutomationsServices
-            .getAutomations()
-            .then(({ data }) => setAutomations(data))
-            .catch(err => console.log(err))
+    const handlerForEdit = (id) => {
+        modalEdit(id)
     }
 
     const items = automationsData.map((item, index) => (
@@ -36,6 +28,7 @@ const AutomationsDetailList = () => {
                         <Text c="dimmed" size="sm">
                             Devices: {item.devices.length} • Funtion: <Button>On/Off </Button>
                         </Text>
+                        <Button variant="default" onClick={() => handlerForEdit(item._id)}>Edit</Button>
                     </div>
                 </div>
             )}
@@ -44,9 +37,7 @@ const AutomationsDetailList = () => {
 
     return (
         <DragDropContext
-            onDragEnd={({ destination, source }) =>
-                handlers.reorder({ from: source.index, to: destination?.index || 0 })
-            }
+            onDragEnd={handleOnDragEnd}
         >
             <Droppable droppableId="dnd-list" direction="vertical">
                 {(provided) => (
@@ -54,6 +45,25 @@ const AutomationsDetailList = () => {
                         {items}
                         {provided.placeholder}
                     </div>
+                )}
+            </Droppable>
+            <Droppable droppableId="trash-bin">
+                {(provided) => (
+                    <Box
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                        style={{
+                            marginTop: '20px',
+                            padding: '20px',
+                            backgroundColor: '#f5f5f5',
+                            textAlign: 'center',
+                            borderRadius: '8px',
+                            border: '2px dashed #ccc',
+                        }}
+                    >
+                        <IconTrash size={48} color="red" />
+                        <Text>Drop here to delete</Text>
+                    </Box>
                 )}
             </Droppable>
         </DragDropContext>

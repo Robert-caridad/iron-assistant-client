@@ -2,9 +2,7 @@ import cx from 'clsx'
 import { Text, Button, Box } from '@mantine/core'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import classes from './AreasDetailList.module.css'
-import AreasServices from '../../services/areas.services'
 import { IconTrash } from '@tabler/icons-react'
-
 
 const AreasDetailList = ({ modalEdit, areasData, handleOnDragEnd }) => {
 
@@ -28,7 +26,6 @@ const AreasDetailList = ({ modalEdit, areasData, handleOnDragEnd }) => {
                             Position: {item.name} • Mass: {item.name}
                         </Text>
                         <Button variant="default" onClick={() => handlerForEdit(item._id)}>Edit</Button>
-
                     </div>
                 </div>
             )}

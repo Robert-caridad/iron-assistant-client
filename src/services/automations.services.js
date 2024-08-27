@@ -32,8 +32,8 @@ class AutomationsServices {
     putEditAutomationsById(idDevice, automationData) {
         return this.axiosApp.put(`/${idDevice}`, automationData)
     }
-    deleteAutomationsById() {
-        return this.axiosApp.delete('/:id')
+    deleteAutomationsById(automationId) {
+        return this.axiosApp.delete(`/${automationId}`)
     }
 }
 
