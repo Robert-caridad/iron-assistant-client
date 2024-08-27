@@ -14,7 +14,7 @@ export default function Layout({ children }) {
         // </Grid>
 
         <AppShell
-            header={{ height: 60 }}
+            // header={{ height: 60 }}
             navbar={{
                 width: 300,
                 breakpoint: 'sm',
@@ -29,7 +29,6 @@ export default function Layout({ children }) {
                     hiddenFrom="sm"
                     size="lg"
                 />
-                {/* <div>Logo</div> */}
             </AppShell.Header>
 
             <AppShell.Navbar><Navigation /></AppShell.Navbar>

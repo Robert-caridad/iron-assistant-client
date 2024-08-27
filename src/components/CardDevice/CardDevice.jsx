@@ -2,7 +2,7 @@ import { IconEye, IconMessageCircle } from '@tabler/icons-react';
 import { Card, Text, Group, Center, rem, useMantineTheme } from '@mantine/core';
 import classes from './CardDevice.module.css'
 
-const CardDevice = ({ name }) => {
+const CardDevice = ({ name, picture }) => {
 
     const theme = useMantineTheme();
 
@@ -13,14 +13,12 @@ const CardDevice = ({ name }) => {
             className={classes.card}
             radius="md"
             component="a"
-            href="https://mantine.dev/"
-            target="_blank"
         >
             <div
                 className={classes.image}
                 style={{
                     backgroundImage:
-                        'url(https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80)',
+                        `url(${picture})`,
                 }}
             />
             <div className={classes.overlay} />
