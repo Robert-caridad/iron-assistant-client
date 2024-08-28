@@ -8,7 +8,8 @@ import {
     rem,
     Anchor,
     Text,
-    Flex
+    Flex,
+    Image
 } from '@mantine/core'
 import { MantineLogo } from '@mantinex/mantine-logo'
 import { useDisclosure } from '@mantine/hooks'
@@ -28,7 +29,7 @@ const NavigationHomePage = () => {
             <header className={classes.header}>
                 <Group justify="space-between" h="100%">
                     <Anchor component={Link} to='/' >
-                        <MantineLogo size={30} />
+                        <Image src={'https://res.cloudinary.com/dwk8n7yvq/image/upload/v1724861078/home-assistant-social-media-logo-round_tdskva.png'} width={30} height={30} />
                     </Anchor>
                     {
                         loggedUser ?

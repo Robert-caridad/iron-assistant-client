@@ -1,4 +1,4 @@
-import { Anchor, Group, ActionIcon, rem } from '@mantine/core'
+import { Anchor, Group, ActionIcon, rem, Image } from '@mantine/core'
 import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react'
 import { MantineLogo } from '@mantinex/mantine-logo'
 import classes from './Footer.module.css'
@@ -23,7 +23,7 @@ const Footer = () => {
         <div className={classes.footer}>
             <div className={classes.inner}>
                 <Anchor component={Link} to='/' >
-                    <MantineLogo size={28} />
+                    <Image src={'https://res.cloudinary.com/dwk8n7yvq/image/upload/v1724861078/home-assistant-social-media-logo-round_tdskva.png'} width={30} height={30} />
                 </Anchor>
                 <Group className={classes.links}>{items}</Group>
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { UnstyledButton, Tooltip, Title, rem, Anchor } from '@mantine/core'
+import { UnstyledButton, Tooltip, Title, rem, Anchor, Image } from '@mantine/core'
 import {
     IconHome2,
     IconGauge,
@@ -98,7 +98,7 @@ const Navigation = () => {
                 <div className={classes.aside}>
                     <div className={classes.logo}>
                         <Anchor component={Link} to='/' >
-                            <MantineLogo type="mark" size={30} />
+                            <Image src={'https://res.cloudinary.com/dwk8n7yvq/image/upload/v1724861078/home-assistant-social-media-logo-round_tdskva.png'} width={30} height={30} />
                         </Anchor>
                     </div>
                     {mainLinks}

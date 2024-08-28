@@ -13,7 +13,12 @@ const Technologies = () => {
                         <Title order={4} className={classes.title}>
                         </Title>
                     </div>
-                    <Button className={classes.button} variant="white" color="dark">
+                    <Button
+                        component="a"
+                        href="https://react.dev/"
+                        target="_blank"
+                        className={classes.button}
+                        variant="white" color="dark">
                         React
                     </Button>
                 </Paper>
@@ -27,7 +32,12 @@ const Technologies = () => {
                         <Title order={4} className={classes.title}>
                         </Title>
                     </div>
-                    <Button variant="white" color="dark">
+                    <Button
+                        component="a"
+                        href="https://mantine.dev/"
+                        target="_blank"
+                        variant="white"
+                        color="dark">
                         Mantine
                     </Button>
                 </Paper>
@@ -41,7 +51,12 @@ const Technologies = () => {
                         <Title order={4} className={classes.title}>
                         </Title>
                     </div>
-                    <Button variant="white" color="dark">
+                    <Button
+                        component="a"
+                        href="https://mqtt.org/"
+                        target="_blank"
+                        variant="white"
+                        color="dark">
                         MQTT
                     </Button>
                 </Paper>
@@ -55,8 +70,13 @@ const Technologies = () => {
                         <Title order={4} className={classes.title}>
                         </Title>
                     </div>
-                    <Button variant="white" color="dark">
-                        Express js
+                    <Button
+                        component="a"
+                        href="https://nodejs.org/en"
+                        target="_blank"
+                        variant="white"
+                        color="dark">
+                        Node js
                     </Button>
                 </Paper>
             </GridCol>
@@ -69,8 +89,13 @@ const Technologies = () => {
                         <Title order={4} className={classes.title}>
                         </Title>
                     </div>
-                    <Button variant="white" color="dark">
-                        Node js
+                    <Button
+                        component="a"
+                        href="https://www.mongodb.com/es"
+                        target="_blank"
+                        variant="white"
+                        color="dark">
+                        Mongo DB
                     </Button>
                 </Paper>
             </GridCol>
@@ -83,8 +108,13 @@ const Technologies = () => {
                         <Title order={4} className={classes.title}>
                         </Title>
                     </div>
-                    <Button variant="white" color="dark">
-                        Mongo db
+                    <Button
+                        component="a"
+                        href="https://expressjs.com/"
+                        target="_blank"
+                        variant="white"
+                        color="dark">
+                        Express js
                     </Button>
                 </Paper>
             </GridCol>
