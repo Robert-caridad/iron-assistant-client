@@ -30,8 +30,7 @@ const DevicesPageDashboard = () => {
             .catch(err => console.log(err))
     }
 
-    const handleOnDragEnd = (result) => {
-        const { destination, source } = result
+    const handleOnDragEnd = ({ destination, source }) => {
 
         if (!destination) {
             return

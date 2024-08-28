@@ -27,17 +27,15 @@ const UploaderPicture = ({ updateForm }) => {
 
         uploadServices
             .uploadimage(formData)
-            .then(res => {
-                const imageUrl = res.data.cloudinary_url
+            .then(({ data }) => {
+                const { cloudinary_url: imageUrl } = data
                 updateForm(imageUrl)
                 setuploadImage('Upload Done')
             })
             .catch(err => {
                 console.log(err)
                 setuploadImage('Upload fail')
-            }
-
-            )
+            })
     }
 
     return (
