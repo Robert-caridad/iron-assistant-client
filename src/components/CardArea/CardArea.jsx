@@ -1,7 +1,7 @@
 import { Card, Text, Group, Center, rem, useMantineTheme } from '@mantine/core'
 import classes from './CardArea.module.css'
 
-const CardArea = ({ name, floor, picture, devicesLength }) => {
+const CardArea = ({ }) => {
 
     return (
         <Card
