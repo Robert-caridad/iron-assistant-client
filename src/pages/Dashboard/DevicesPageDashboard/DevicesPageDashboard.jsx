@@ -67,7 +67,7 @@ const DevicesPageDashboard = () => {
             <Group pb={20} >
                 <ModalForm name="Devices" form={<NewDeviceForm />} />
             </Group>
-            <DevicesDetailList modalEdit={modalEdit} devicesData={devicesData} handleOnDragEnd={handleOnDragEnd} />ß
+            <DevicesDetailList modalEdit={modalEdit} devicesData={devicesData} handleOnDragEnd={handleOnDragEnd} />
             <Modal opened={opened} onClose={close} title={`Edit`}>
                 <EditDeviceForm id={idDevice} closeModalEdit={closeModalEdit} />
             </Modal>

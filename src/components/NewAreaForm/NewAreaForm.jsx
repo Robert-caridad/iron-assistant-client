@@ -4,44 +4,15 @@ import {
     Button,
     Fieldset,
     MultiSelect,
-    useMantineTheme,
-    rem,
-    Group,
-    Text
+    FileInput
 } from '@mantine/core'
-import { Dropzone, MIME_TYPES } from '@mantine/dropzone'
-import { IconCloudUpload, IconX, IconDownload } from '@tabler/icons-react'
 import areasServices from '../../services/areas.services'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import devicesServices from '../../services/devices.services'
-import classes from './NewAreaForm.module.css'
-import uploadServices from '../../services/upload.services'
-import { Image, SimpleGrid } from '@mantine/core'
+import uploadServices from '../../services/upload.services';
 
 const NewAreaForm = () => {
-    const theme = useMantineTheme()
-    const openRef = useRef(null)
-
-    const [files, setFiles] = useState([])
-
-    const previews = files.map((file, index) => {
-        const imageUrl = URL.createObjectURL(file)
-        return <Image key={index} src={imageUrl} onLoad={() => URL.revokeObjectURL(imageUrl)} />
-    })
-
-    const onUpload = () => {
-        setUploadStatus("Uploading....")
-        const formData = new FormData()
-        selectedImages.forEach((image) => {
-            formData.append("file", image)
-        })
-
-        uploadServices
-            .uploadimage(formData)
-            .then()
-            .cach(err => console.log(err))
-    }
-
+    const [value, setValue] = useState([])
     const [alldevices, setDevices] = useState([])
 
     const form = useForm({
@@ -74,8 +45,6 @@ const NewAreaForm = () => {
 
     const handleFormSubmit = areaData => {
 
-        // TODO: RESOLVER TRANSACCION MULTIPLE DESDE LA API
-
         areasServices
             .postNewArea(areaData)
             .then((area) => {
@@ -86,6 +55,19 @@ const NewAreaForm = () => {
                         .catch(err => console.log(err))
                 })
                 alert("Created Area")
+            })
+            .catch(err => console.log(err))
+    }
+
+    const handleFileUpload = e => {
+        const formData = new FormData()
+        formData.append('imageData', e[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                const imageUrl = res.data.cloudinary_url
+                form.setFieldValue('picture', imageUrl)
             })
             .catch(err => console.log(err))
     }
@@ -106,56 +88,16 @@ const NewAreaForm = () => {
                 ) : (
                     <p>Loading devices...</p>
                 )}
-                <div className={classes.wrapper}>
-                    <Dropzone
-                        openRef={openRef}
-                        onDrop={() => { console.log('lol') }}
-                        className={classes.dropzone}
-                        radius="md"
-                        accept={[MIME_TYPES.pdf]}
-                        maxSize={30 * 1024 ** 2}
-                    >
-                        <div style={{ pointerEvents: 'none' }}>
-                            <Group justify="center">
-                                <Dropzone.Accept>
-                                    <IconDownload
-                                        style={{ width: rem(50), height: rem(50) }}
-                                        color={theme.colors.blue[6]}
-                                        stroke={1.5}
-                                    />
-                                </Dropzone.Accept>
-                                <Dropzone.Reject>
-                                    <IconX
-                                        style={{ width: rem(50), height: rem(50) }}
-                                        color={theme.colors.red[6]}
-                                        stroke={1.5}
-                                    />
-                                </Dropzone.Reject>
-                                <Dropzone.Idle>
-                                    <IconCloudUpload style={{ width: rem(50), height: rem(50) }} stroke={1.5} />
-                                </Dropzone.Idle>
-                            </Group>
+                <FileInput
+                    label="Input label"
+                    description="Input description"
+                    placeholder="Input placeholder"
+                    multiple value={value} onChange={setValue}
+                />
 
-                            <Text ta="center" fw={700} fz="lg" mt="xl">
-                                <Dropzone.Accept>Drop files here</Dropzone.Accept>
-                                <Dropzone.Reject>Pdf file less than 30mb</Dropzone.Reject>
-                                <Dropzone.Idle>Upload resume</Dropzone.Idle>
-                            </Text>
-                            <Text ta="center" fz="sm" mt="xs" c="dimmed">
-                                Drag&aposn&aposdrop files here to upload. We can accept only <i>.pdf</i> files that
-                                are less than 30mb in size.
-                            </Text>
-                        </div>
-                    </Dropzone>
-
-                    <SimpleGrid cols={{ base: 1, sm: 4 }} mt={previews.length > 0 ? 'xl' : 0}>
-                        {previews}
-                    </SimpleGrid>
-
-                    <Button className={classes.control} size="md" radius="xl" onClick={() => openRef.current?.()}>
-                        Select files
-                    </Button>
-                </div>
+                <Button fullWidth mt="xl" size="md" onClick={() => { handleFileUpload(value) }}>
+                    Send
+                </Button>
 
                 <Button type="submit" fullWidth mt="xl" size="md">
                     Create

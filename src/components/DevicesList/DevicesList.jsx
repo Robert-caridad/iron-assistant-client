@@ -25,7 +25,7 @@ const DevicesList = () => {
                 devices.map(elm => {
                     return (
                         <GridCol span={3} key={elm._id}>
-                            <CardDevice {...elm} />
+                            <CardDevice {...elm} devicesLength={devices.length} />
                         </GridCol>
                     )
                 })

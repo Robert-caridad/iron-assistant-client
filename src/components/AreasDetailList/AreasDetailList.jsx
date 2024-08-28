@@ -53,14 +53,7 @@ const AreasDetailList = ({ modalEdit, areasData, handleOnDragEnd }) => {
                     <Box
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        style={{
-                            marginTop: '20px',
-                            padding: '20px',
-                            backgroundColor: '#f5f5f5',
-                            textAlign: 'center',
-                            borderRadius: '8px',
-                            border: '2px dashed #ccc',
-                        }}
+                        className={classes.item}
                     >
                         <IconTrash size={48} color="red" />
                         <Text>Drop here to delete</Text>
