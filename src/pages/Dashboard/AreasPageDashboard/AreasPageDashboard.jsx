@@ -1,4 +1,4 @@
-import AreasDetailList from '../../../components/AreasDetailList/AreasDetailList'
+import AreasDetailList from '../../../components/AreasDetailsList/AreasDetailsList'
 import ModalForm from '../../../components/ModalForm/ModalForm'
 import NewAreaForm from '../../../components/NewAreaForm/NewAreaForm'
 import { useEffect, useState } from "react"
