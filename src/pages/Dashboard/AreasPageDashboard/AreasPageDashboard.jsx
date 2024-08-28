@@ -20,7 +20,7 @@ const AreasPageDashboard = () => {
         fetchAreas()
     }, [])
 
-    const modalEdit = (id) => {
+    const openModalEdit = (id) => {
         setIdArea(id)
         open()
     }
@@ -33,12 +33,11 @@ const AreasPageDashboard = () => {
     const fetchAreas = () => {
         areasServices
             .getAreas()
-            .then(({ data }) => { setAreasData(data) })
+            .then(({ data }) => setAreasData(data))
             .catch(err => console.log(err))
     }
 
-    const handleOnDragEnd = (result) => {
-        const { destination, source } = result
+    const handleOnDragEnd = ({ destination, source }) => {
 
         if (!destination) {
             return
@@ -64,7 +63,7 @@ const AreasPageDashboard = () => {
             <Group pb={20}>
                 <ModalForm name="Area" form={<NewAreaForm />} />
             </Group>
-            <AreasDetailList modalEdit={modalEdit} areasData={areasData} handleOnDragEnd={handleOnDragEnd} />
+            <AreasDetailList openModalEdit={openModalEdit} areasData={areasData} handleOnDragEnd={handleOnDragEnd} />
             <Modal opened={opened} onClose={close} title={`Edit`}>
                 <EditAreaForm id={idArea} closeModalEdit={closeModalEdit} />
             </Modal>

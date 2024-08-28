@@ -7,8 +7,10 @@ const HomePagesDashboard = () => {
         <div>
             <h2>Areas</h2>
             <AreasList />
+
             <h2>Devices</h2>
             <DevicesList />
+
             <h2>Automations</h2>
             <AutomationsList />
         </div>

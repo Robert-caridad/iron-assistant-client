@@ -38,7 +38,6 @@ const EditAutomationForm = ({ id, closeModalEdit }) => {
         automationsServices
             .getAutomationById(id)
             .then(({ data }) => {
-                console.log(data)
                 const selectedDeviceIds = data.devices.map(device => device._id)
                 form.setValues({
                     name: data.name || '',

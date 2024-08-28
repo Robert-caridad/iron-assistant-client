@@ -32,12 +32,11 @@ const AutomationsPageDashboard = () => {
     const fetchAutomations = () => {
         automationsServices
             .getAutomations()
-            .then(({ data }) => { setautomationsData(data) })
+            .then(({ data }) => setautomationsData(data))
             .catch(err => console.log(err))
     }
 
-    const handleOnDragEnd = (result) => {
-        const { destination, source } = result
+    const handleOnDragEnd = ({ destination, source }) => {
 
         if (!destination) {
             return

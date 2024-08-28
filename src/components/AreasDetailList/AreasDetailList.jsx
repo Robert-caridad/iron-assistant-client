@@ -4,10 +4,10 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import classes from './AreasDetailList.module.css'
 import { IconTrash } from '@tabler/icons-react'
 
-const AreasDetailList = ({ modalEdit, areasData, handleOnDragEnd }) => {
+const AreasDetailList = ({ openModalEdit, areasData, handleOnDragEnd }) => {
 
     const handlerForEdit = (id) => {
-        modalEdit(id)
+        openModalEdit(id)
     }
 
     const items = areasData.map((item, index) => (
