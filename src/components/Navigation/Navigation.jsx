@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { UnstyledButton, Tooltip, Title, rem, Anchor, AppShell } from '@mantine/core'
+import { UnstyledButton, Tooltip, Title, rem, Anchor } from '@mantine/core'
 import {
     IconHome2,
     IconGauge,

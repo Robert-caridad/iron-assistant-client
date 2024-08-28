@@ -8,12 +8,10 @@ const PrivateRouter = () => {
     const { loggedUser, isLoading } = useContext(AuthContext)
 
     if (isLoading) {
-        //TODO: Add component spinner
         return <h1>Loading</h1>
     }
 
     if (!loggedUser) {
-        // TODO: change route
         return <Navigate to='/?err=401' />
     }
 

@@ -1,11 +1,10 @@
 import cx from 'clsx'
-import { Text, Button, Box } from '@mantine/core'
+import { Text, Button, Box, Image } from '@mantine/core'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import classes from './DevicesDetailList.module.css'
 import { IconTrash } from '@tabler/icons-react'
 
 const DevicesDetailList = ({ modalEdit, devicesData, handleOnDragEnd }) => {
-
 
     const handlerForEdit = (id) => {
         modalEdit(id)
@@ -20,6 +19,13 @@ const DevicesDetailList = ({ modalEdit, devicesData, handleOnDragEnd }) => {
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                 >
+                    <Image
+                        radius="md"
+                        h={150}
+                        w={'auto'}
+                        fit="contain"
+                        src={item.picture}
+                    />
                     <Text className={classes.symbol}></Text>
                     <div>
                         <Text mb={10}>{item.name}</Text>

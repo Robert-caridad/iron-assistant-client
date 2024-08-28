@@ -6,9 +6,9 @@ import {
 } from '@mantine/core'
 import devicesServices from '../../services/devices.services'
 import { useEffect, useState } from 'react'
-import areasServices from '../../services/areas.services'
 import { useForm } from '@mantine/form'
 import automationsServices from '../../services/automations.services'
+import UploaderPicture from '../UploaderPicture/UploaderPicture'
 
 const EditAutomationForm = ({ id, closeModalEdit }) => {
 
@@ -44,6 +44,7 @@ const EditAutomationForm = ({ id, closeModalEdit }) => {
                     name: data.name || '',
                     icon: data.icon || '',
                     floor: data.floor || '',
+                    picture: data.floor || '',
                     selectedDevices: selectedDeviceIds
                 })
                 return devicesServices.getAllDevices()
@@ -66,10 +67,15 @@ const EditAutomationForm = ({ id, closeModalEdit }) => {
             .catch(err => console.log(err))
     }
 
+    const updateForm = imageUrl => {
+        form.setFieldValue('picture', imageUrl)
+    }
+
     return (
         <Fieldset legend="Area information">
             <form onSubmit={form.onSubmit((values) => handleFormSubmit(values))}>
                 <TextInput label="Name" placeholder="Name" size="md" key={form.key('name')} {...form.getInputProps('name')} />
+                <TextInput label="Picture" placeholder="Picture" size="md" key={form.key('picture')} {...form.getInputProps('picture')} />
                 {loading ? (<p>Loading devices...</p>
                 ) : (
                     <MultiSelect
@@ -79,6 +85,7 @@ const EditAutomationForm = ({ id, closeModalEdit }) => {
                         {...form.getInputProps('selectedDevices')}
                     />
                 )}
+                <UploaderPicture updateForm={updateForm} />
                 <Button type="submit" fullWidth mt="xl" size="md">
                     Edit
                 </Button>

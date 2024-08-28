@@ -3,16 +3,15 @@ import {
     TextInput,
     Button,
     Fieldset,
-    MultiSelect,
-    FileInput
+    MultiSelect
 } from '@mantine/core'
 import areasServices from '../../services/areas.services'
 import { useEffect, useState } from 'react'
 import devicesServices from '../../services/devices.services'
-import uploadServices from '../../services/upload.services';
+import UploaderPicture from '../UploaderPicture/UploaderPicture'
 
 const NewAreaForm = () => {
-    const [value, setValue] = useState([])
+
     const [alldevices, setDevices] = useState([])
 
     const form = useForm({
@@ -59,17 +58,8 @@ const NewAreaForm = () => {
             .catch(err => console.log(err))
     }
 
-    const handleFileUpload = e => {
-        const formData = new FormData()
-        formData.append('imageData', e[0])
-
-        uploadServices
-            .uploadimage(formData)
-            .then(res => {
-                const imageUrl = res.data.cloudinary_url
-                form.setFieldValue('picture', imageUrl)
-            })
-            .catch(err => console.log(err))
+    const updateForm = imageUrl => {
+        form.setFieldValue('picture', imageUrl)
     }
 
     return (
@@ -88,17 +78,7 @@ const NewAreaForm = () => {
                 ) : (
                     <p>Loading devices...</p>
                 )}
-                <FileInput
-                    label="Input label"
-                    description="Input description"
-                    placeholder="Input placeholder"
-                    multiple value={value} onChange={setValue}
-                />
-
-                <Button fullWidth mt="xl" size="md" onClick={() => { handleFileUpload(value) }}>
-                    Send
-                </Button>
-
+                <UploaderPicture updateForm={updateForm} />
                 <Button type="submit" fullWidth mt="xl" size="md">
                     Create
                 </Button>

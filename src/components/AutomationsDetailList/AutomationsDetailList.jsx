@@ -19,6 +19,13 @@ const AutomationsDetailList = ({ modalEdit, automationsData, handleOnDragEnd }) 
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                 >
+                    <Image
+                        radius="md"
+                        h={150}
+                        w={'auto'}
+                        fit="contain"
+                        src={item.picture}
+                    />
                     <Text className={classes.symbol}>{ }</Text>
                     <div>
                         <Text>{item.name}</Text>

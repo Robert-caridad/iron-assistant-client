@@ -1,5 +1,5 @@
 import cx from 'clsx'
-import { Text, Button, Box } from '@mantine/core'
+import { Text, Button, Box, Image } from '@mantine/core'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import classes from './AreasDetailList.module.css'
 import { IconTrash } from '@tabler/icons-react'
@@ -19,6 +19,13 @@ const AreasDetailList = ({ modalEdit, areasData, handleOnDragEnd }) => {
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
                 >
+                    <Image
+                        radius="md"
+                        h={150}
+                        w={'auto'}
+                        fit="contain"
+                        src={item.picture}
+                    />
                     <Text className={classes.symbol}>{item.symbol}</Text>
                     <div>
                         <Text>{item.name}</Text>

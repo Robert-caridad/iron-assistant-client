@@ -8,6 +8,7 @@ import { useForm } from '@mantine/form'
 import { useEffect, useState } from 'react'
 import AutomationsServices from '../../services/automations.services'
 import DevicesServices from '../../services/devices.services'
+import UploaderPicture from '../UploaderPicture/UploaderPicture'
 
 const NewAutomationForm = () => {
 
@@ -47,6 +48,10 @@ const NewAutomationForm = () => {
             .catch(err => console.log(err))
     }
 
+    const updateForm = imageUrl => {
+        form.setFieldValue('picture', imageUrl)
+    }
+
     return (
         <Fieldset legend="Automation setup">
             <form onSubmit={form.onSubmit((values) => handleFormSubmit(values))}>
@@ -63,6 +68,7 @@ const NewAutomationForm = () => {
                     (
                         <p>Loading devices...</p>
                     )}
+                <UploaderPicture updateForm={updateForm} />
                 <Button type="submit" fullWidth mt="xl" size="md">
                     Create
                 </Button>

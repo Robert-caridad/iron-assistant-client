@@ -6,6 +6,8 @@ import {
     Select
 } from '@mantine/core'
 import DevicesServices from '../../services/devices.services'
+import UploaderPicture from '../UploaderPicture/UploaderPicture'
+
 const NewDeviceForm = () => {
 
     const form = useForm({
@@ -16,11 +18,11 @@ const NewDeviceForm = () => {
             deviceType: '',
             logicFuction: '',
             brightness: null,
+            picture: '',
             temperature: null,
         },
         validate: {
             name: (value) => (value.length < 0 ? 'Require Name' : null),
-            icon: (value) => (value.length < 0 ? 'Password must have at least 2 character' : null),
             deviceType: (value) => value === '' ? 'Device type is required' : null
         }
     })
@@ -47,6 +49,10 @@ const NewDeviceForm = () => {
             .catch(err => console.log(err))
     }
 
+    const updateForm = imageUrl => {
+        form.setFieldValue('picture', imageUrl)
+    }
+
     return (
         <Fieldset legend="Device information">
             <form onSubmit={form.onSubmit((values) => handleFormSubmit(values))}>
@@ -60,6 +66,7 @@ const NewDeviceForm = () => {
                     {...form.getInputProps('deviceType')}
                     onChange={handleDeviceTypeChange}
                 />
+                <UploaderPicture updateForm={updateForm} />
                 <Button type="submit" fullWidth mt="xl" size="md">
                     Create
                 </Button>

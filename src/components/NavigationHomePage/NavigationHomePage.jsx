@@ -7,7 +7,8 @@ import {
     ScrollArea,
     rem,
     Anchor,
-    Text
+    Text,
+    Flex
 } from '@mantine/core'
 import { MantineLogo } from '@mantinex/mantine-logo'
 import { useDisclosure } from '@mantine/hooks'
@@ -53,17 +54,25 @@ const NavigationHomePage = () => {
                 onClose={closeDrawer}
                 size="100%"
                 padding="md"
-                title="Navigation"
                 hiddenFrom="sm"
                 zIndex={1000000}
             >
                 <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
-
-                    <Group justify="center" grow pb="xl" px="md">
-                        <Button variant="default" component={Link} to="/login">Log in</Button>
-                        <Button component={Link} to="/login">Sign up</Button>
-                    </Group>
-                    <Group justify="center">
+                    {loggedUser ?
+                        <Flex direction='column' align="center">
+                            <Group mt='xl'>
+                                <Text>{`Welcome! ${loggedUser.username}`}</Text>
+                                <Button variant="default" component={Link} to="/dashboard/home">Dashboard</Button>
+                                <Button onClick={logoutUser}>Logout</Button>
+                            </Group>
+                        </Flex>
+                        :
+                        <Group justify="center" grow pb="xl" px="md" mt='xl'>
+                            <Button variant="default" component={Link} to="/login">Log in</Button>
+                            <Button component={Link} to="/login">Sign up</Button>
+                        </Group>
+                    }
+                    <Group justify="center" mt='xl'>
                         <ButtonColorTheme />
                     </Group>
                 </ScrollArea>
