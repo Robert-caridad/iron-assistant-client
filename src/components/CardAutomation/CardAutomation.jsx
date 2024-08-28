@@ -36,24 +36,6 @@ const CardAutomation = ({ name, floor, picture }) => {
 
                         <Group gap="lg">
                             <Center>
-                                <IconEye
-                                    style={{ width: rem(16), height: rem(16) }}
-                                    stroke={1.5}
-                                    color={theme.colors.dark[2]}
-                                />
-                                <Text size="sm" className={classes.bodyText}>
-                                    7847
-                                </Text>
-                            </Center>
-                            <Center>
-                                <IconMessageCircle
-                                    style={{ width: rem(16), height: rem(16) }}
-                                    stroke={1.5}
-                                    color={theme.colors.dark[2]}
-                                />
-                                <Text size="sm" className={classes.bodyText}>
-                                    5
-                                </Text>
                             </Center>
                         </Group>
                     </Group>

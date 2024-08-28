@@ -11,10 +11,7 @@ const HeroImageBackground = () => {
 
             <div className={classes.inner}>
                 <Title className={classes.title}>
-                    Iron Assistant for{' '}
-                    <Text component="span" inherit className={classes.highlight}>
-                        any person
-                    </Text>
+                    Iron Assistant
                 </Title>
 
                 <Container size={640}>

@@ -22,7 +22,7 @@ const Dashboard = [
 ]
 
 const Analytics = [
-    'Spare1',
+    { nameLink: 'Analytics', route: '/dashboard/analytics' },
     'Spare2',
     'Spare3'
 ]

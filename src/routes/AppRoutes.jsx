@@ -11,6 +11,7 @@ import AreasPageDashboard from '../pages/Dashboard/AreasPageDashboard/AreasPageD
 import AutomationsPageDashboard from '../pages/Dashboard/AutomationsPageDashboard/AutomationsPageDashboard'
 import HomePagesDashboard from '../pages/Dashboard/HomePageDashboard/HomePageDashboard'
 import TechnologiesPage from '../pages/TechnologiesPage/TechnologiesPage'
+import AnalyticsDashboard from '../pages/Dashboard/AnalyticsDashboard/AnalyticsDashboard'
 
 const AppRoutes = () => {
     return (
@@ -28,6 +29,7 @@ const AppRoutes = () => {
                     <Route path='/dashboard/devices' element={<DevicesPageDashboard />} />
                     <Route path='/dashboard/areas' element={<AreasPageDashboard />} />
                     <Route path='/dashboard/automations' element={<AutomationsPageDashboard />} />
+                    <Route path='/dashboard/analytics' element={<AnalyticsDashboard />} />
                     <Route path='/dashboard/account' />
                 </Route>
 

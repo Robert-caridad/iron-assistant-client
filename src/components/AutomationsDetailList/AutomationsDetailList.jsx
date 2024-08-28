@@ -1,5 +1,5 @@
 import cx from 'clsx'
-import { Text, Button, Box } from '@mantine/core'
+import { Text, Button, Box, Image } from '@mantine/core'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 import classes from './AutomationsDetailList.module.css'
 import { IconTrash } from '@tabler/icons-react'

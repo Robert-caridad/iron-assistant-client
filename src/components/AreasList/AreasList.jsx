@@ -23,7 +23,7 @@ const AreasList = () => {
             {
                 areas.map(elm => {
                     return (
-                        <GridCol span={3} key={elm._id}>
+                        <GridCol span={4} key={elm._id}>
                             <CardArea {...elm} />
                         </GridCol>
                     )

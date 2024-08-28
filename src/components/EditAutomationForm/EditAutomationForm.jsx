@@ -43,7 +43,7 @@ const EditAutomationForm = ({ id, closeModalEdit }) => {
                     name: data.name || '',
                     icon: data.icon || '',
                     floor: data.floor || '',
-                    picture: data.floor || '',
+                    picture: data.picture || '',
                     selectedDevices: selectedDeviceIds
                 })
                 return devicesServices.getAllDevices()
