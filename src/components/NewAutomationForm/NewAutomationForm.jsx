@@ -59,9 +59,10 @@ const NewAutomationForm = () => {
                         data={alldevices}
                         {...form.getInputProps('devices')}
                     />
-                ) : (
-                    <p>Loading devices...</p>
-                )}
+                ) :
+                    (
+                        <p>Loading devices...</p>
+                    )}
                 <Button type="submit" fullWidth mt="xl" size="md">
                     Create
                 </Button>

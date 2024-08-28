@@ -44,6 +44,7 @@ const AutomationsDetailList = ({ modalEdit, automationsData, handleOnDragEnd }) 
                     </div>
                 )}
             </Droppable>
+
             <Droppable droppableId="trash-bin">
                 {(provided) => (
                     <Box
@@ -63,6 +64,7 @@ const AutomationsDetailList = ({ modalEdit, automationsData, handleOnDragEnd }) 
                     </Box>
                 )}
             </Droppable>
+
         </DragDropContext>
     )
 }

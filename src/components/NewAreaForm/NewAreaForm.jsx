@@ -9,32 +9,32 @@ import {
     Group,
     Text
 } from '@mantine/core'
-import { Dropzone, MIME_TYPES } from '@mantine/dropzone';
-import { IconCloudUpload, IconX, IconDownload } from '@tabler/icons-react';
+import { Dropzone, MIME_TYPES } from '@mantine/dropzone'
+import { IconCloudUpload, IconX, IconDownload } from '@tabler/icons-react'
 import areasServices from '../../services/areas.services'
 import { useEffect, useState, useRef } from 'react'
 import devicesServices from '../../services/devices.services'
-import classes from './NewAreaForm.module.css';
-import uploadServices from '../../services/upload.services';
-import { Image, SimpleGrid } from '@mantine/core';
+import classes from './NewAreaForm.module.css'
+import uploadServices from '../../services/upload.services'
+import { Image, SimpleGrid } from '@mantine/core'
 
 const NewAreaForm = () => {
-    const theme = useMantineTheme();
+    const theme = useMantineTheme()
     const openRef = useRef(null)
 
-    const [files, setFiles] = useState([]);
+    const [files, setFiles] = useState([])
 
     const previews = files.map((file, index) => {
-        const imageUrl = URL.createObjectURL(file);
-        return <Image key={index} src={imageUrl} onLoad={() => URL.revokeObjectURL(imageUrl)} />;
-    });
+        const imageUrl = URL.createObjectURL(file)
+        return <Image key={index} src={imageUrl} onLoad={() => URL.revokeObjectURL(imageUrl)} />
+    })
 
     const onUpload = () => {
-        setUploadStatus("Uploading....");
-        const formData = new FormData();
+        setUploadStatus("Uploading....")
+        const formData = new FormData()
         selectedImages.forEach((image) => {
-            formData.append("file", image);
-        });
+            formData.append("file", image)
+        })
 
         uploadServices
             .uploadimage(formData)
@@ -71,8 +71,6 @@ const NewAreaForm = () => {
             })
             .catch(err => console.log(err))
     }
-
-
 
     const handleFormSubmit = areaData => {
 
@@ -144,7 +142,7 @@ const NewAreaForm = () => {
                                 <Dropzone.Idle>Upload resume</Dropzone.Idle>
                             </Text>
                             <Text ta="center" fz="sm" mt="xs" c="dimmed">
-                                Drag&apos;n&apos;drop files here to upload. We can accept only <i>.pdf</i> files that
+                                Drag&aposn&aposdrop files here to upload. We can accept only <i>.pdf</i> files that
                                 are less than 30mb in size.
                             </Text>
                         </div>

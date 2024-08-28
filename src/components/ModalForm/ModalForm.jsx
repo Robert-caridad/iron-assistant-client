@@ -1,9 +1,9 @@
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks'
+import { Modal, Button } from '@mantine/core'
 
 const ModalForm = ({ name, form }) => {
 
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { open, close }] = useDisclosure(false)
 
     return (
         <>

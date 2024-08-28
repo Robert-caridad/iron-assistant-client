@@ -26,14 +26,14 @@ const NewDeviceForm = () => {
     })
 
     const handleDeviceTypeChange = (value) => {
-        form.setFieldValue('deviceType', value);
+        form.setFieldValue('deviceType', value)
 
         if (value === 'light') {
-            form.setFieldValue('brightness', 0);
-            form.setFieldValue('temperature', null);
+            form.setFieldValue('brightness', 0)
+            form.setFieldValue('temperature', null)
         } else if (value === 'thermostat') {
-            form.setFieldValue('temperature', 0);
-            form.setFieldValue('brightness', null);
+            form.setFieldValue('temperature', 0)
+            form.setFieldValue('brightness', null)
         }
     }
 

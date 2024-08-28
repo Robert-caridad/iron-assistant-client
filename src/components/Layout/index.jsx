@@ -1,18 +1,13 @@
-import { Route, Router, Routes } from "react-router-dom";
-import Navigation from "../Navigation/Navigation";
-import { Grid, GridCol, Group } from "@mantine/core";
-import { AppShell, Burger } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { Route, Router, Routes } from "react-router-dom"
+import Navigation from "../Navigation/Navigation"
+import { Grid, GridCol, Group } from "@mantine/core"
+import { AppShell, Burger } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
 
 export default function Layout({ children }) {
-    const [opened, { toggle }] = useDisclosure();
+    const [opened, { toggle }] = useDisclosure()
 
     return (
-        // <Grid>
-        //     <Grid.Col span="content"> <Navigation /></Grid.Col>
-        //     <Grid.Col span="auto">{children}</Grid.Col>
-        // </Grid>
-
         <AppShell
             header={{ height: 60 }}
             navbar={{
@@ -29,7 +24,6 @@ export default function Layout({ children }) {
                     hiddenFrom="sm"
                     size="lg"
                 />
-                {/* <div>Logo</div> */}
             </AppShell.Header>
 
             <AppShell.Navbar><Navigation /></AppShell.Navbar>

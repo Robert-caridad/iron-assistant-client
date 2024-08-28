@@ -8,17 +8,17 @@ import {
     rem,
     Anchor,
     Text
-} from '@mantine/core';
-import { MantineLogo } from '@mantinex/mantine-logo';
-import { useDisclosure } from '@mantine/hooks';
-import classes from './NavigationHomePage.module.css';
-import { Link } from 'react-router-dom';
-import ButtonColorTheme from '../ButtonColorTheme/ButtonColorTheme';
-import { AuthContext } from '../../contexts/auth.contexts';
-import { useContext } from 'react';
+} from '@mantine/core'
+import { MantineLogo } from '@mantinex/mantine-logo'
+import { useDisclosure } from '@mantine/hooks'
+import classes from './NavigationHomePage.module.css'
+import { Link } from 'react-router-dom'
+import ButtonColorTheme from '../ButtonColorTheme/ButtonColorTheme'
+import { AuthContext } from '../../contexts/auth.contexts'
+import { useContext } from 'react'
 
 const NavigationHomePage = () => {
-    const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
+    const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
 
     const { loggedUser, logoutUser } = useContext(AuthContext)
 
@@ -69,7 +69,7 @@ const NavigationHomePage = () => {
                 </ScrollArea>
             </Drawer>
         </Box>
-    );
+    )
 }
 
 export default NavigationHomePage

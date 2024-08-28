@@ -4,9 +4,8 @@ import {
     Title,
     Text,
     Anchor,
-} from '@mantine/core';
-import classes from './SignUpPage.module.css';
-
+} from '@mantine/core'
+import classes from './SignUpPage.module.css'
 import SignUpForm from "../../components/SignUpForm/SignUpForm"
 
 const SignUpPage = () => {

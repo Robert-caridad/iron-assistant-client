@@ -1,10 +1,9 @@
-import { Anchor, Group, ActionIcon, rem } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
-import { MantineLogo } from '@mantinex/mantine-logo';
-import classes from './Footer.module.css';
-import { Link } from 'react-router-dom';
+import { Anchor, Group, ActionIcon, rem } from '@mantine/core'
+import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react'
+import { MantineLogo } from '@mantinex/mantine-logo'
+import classes from './Footer.module.css'
+import { Link } from 'react-router-dom'
 import { FOOTER_LINKS } from '../../consts/navigation.consts'
-
 
 const Footer = () => {
     const items = FOOTER_LINKS.map((link) => (

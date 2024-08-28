@@ -1,17 +1,17 @@
-import { Card, Avatar, Text, Group, Button, Anchor } from '@mantine/core';
-import classes from './Technologies.module.css';
+import { Card, Avatar, Text, Group, Button, Anchor } from '@mantine/core'
+import classes from './Technologies.module.css'
 
 const statsR = [
     { value: '34K', label: 'Followers' },
     { value: '76', label: 'Follows' },
     { value: '4.8K', label: 'Posts' },
-];
+]
 
 const statsRDB = [
     { value: '76K', label: 'Followers' },
     { value: '170', label: 'Follows' },
     { value: '2.6K', label: 'Posts' },
-];
+]
 
 const Technologies = () => {
     const itemsR = statsR.map((stat) => (
@@ -23,7 +23,7 @@ const Technologies = () => {
                 {stat.label}
             </Text>
         </div>
-    ));
+    ))
 
     const itemsRDB = statsRDB.map((stat) => (
         <div key={stat.label}>
@@ -34,7 +34,7 @@ const Technologies = () => {
                 {stat.label}
             </Text>
         </div>
-    ));
+    ))
 
     return (
         <Group mt={25} justify="center" gap={100}>
@@ -98,7 +98,7 @@ const Technologies = () => {
                 </Button>
             </Card>
         </Group>
-    );
+    )
 }
 
 export default Technologies

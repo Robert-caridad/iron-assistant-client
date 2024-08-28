@@ -1,10 +1,10 @@
-import { IconEye, IconMessageCircle } from '@tabler/icons-react';
-import { Card, Text, Group, Center, rem, useMantineTheme } from '@mantine/core';
+import { IconEye, IconMessageCircle } from '@tabler/icons-react'
+import { Card, Text, Group, Center, rem, useMantineTheme } from '@mantine/core'
 import classes from './CardArea.module.css'
 
 const CardArea = ({ name, floor }) => {
 
-    const theme = useMantineTheme();
+    const theme = useMantineTheme()
 
     return (
         <Card
@@ -62,7 +62,7 @@ const CardArea = ({ name, floor }) => {
                 </div>
             </div>
         </Card>
-    );
+    )
 }
 
 export default CardArea

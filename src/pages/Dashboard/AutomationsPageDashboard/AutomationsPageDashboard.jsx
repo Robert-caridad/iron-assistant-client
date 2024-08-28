@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react';
-import AutomationsDetailList from '../../../components/AutomationsDetailList/AutomationsDetailList';
-import ModalForm from '../../../components/ModalForm/ModalForm';
-import NewAutomationForm from '../../../components/NewAutomationForm/NewAutomationForm';
-import { useDisclosure, useListState } from '@mantine/hooks';
-import { Group, Modal } from '@mantine/core';
-import EditAutomationForm from '../../../components/EditAutomationForm/EditAutomationForm';
-import automationsServices from '../../../services/automations.services';
+import { useEffect, useState } from 'react'
+import AutomationsDetailList from '../../../components/AutomationsDetailList/AutomationsDetailList'
+import ModalForm from '../../../components/ModalForm/ModalForm'
+import NewAutomationForm from '../../../components/NewAutomationForm/NewAutomationForm'
+import { useDisclosure, useListState } from '@mantine/hooks'
+import { Group, Modal } from '@mantine/core'
+import EditAutomationForm from '../../../components/EditAutomationForm/EditAutomationForm'
+import automationsServices from '../../../services/automations.services'
 
 const AutomationsPageDashboard = () => {
-
 
     const [automationsData, setautomationsData] = useState([])
     const [state, handlers] = useListState(automationsData)
 
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { open, close }] = useDisclosure(false)
     const [idAutomation, setIdAutomation] = useState('')
 
     useEffect(() => {

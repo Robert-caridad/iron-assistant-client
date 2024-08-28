@@ -1,19 +1,19 @@
-import AreasDetailList from '../../../components/AreasDetailList/AreasDetailList';
-import ModalForm from '../../../components/ModalForm/ModalForm';
-import NewAreaForm from '../../../components/NewAreaForm/NewAreaForm';
+import AreasDetailList from '../../../components/AreasDetailList/AreasDetailList'
+import ModalForm from '../../../components/ModalForm/ModalForm'
+import NewAreaForm from '../../../components/NewAreaForm/NewAreaForm'
 import { useEffect, useState } from "react"
 import { useListState } from '@mantine/hooks'
-import areasServices from '../../../services/areas.services';
-import EditAreaForm from '../../../components/EditAreaForm/EditAreaForm';
-import { useDisclosure } from '@mantine/hooks';
-import { Group, Modal } from '@mantine/core';
+import areasServices from '../../../services/areas.services'
+import EditAreaForm from '../../../components/EditAreaForm/EditAreaForm'
+import { useDisclosure } from '@mantine/hooks'
+import { Group, Modal } from '@mantine/core'
 
 const AreasPageDashboard = () => {
 
     const [areasData, setAreasData] = useState([])
     const [state, handlers] = useListState(areasData)
 
-    const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { open, close }] = useDisclosure(false)
     const [idArea, setIdArea] = useState('')
 
     useEffect(() => {

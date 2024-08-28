@@ -2,7 +2,6 @@ import AreasList from "../../../components/AreasList/AreasList"
 import AutomationsList from "../../../components/AutomationsList/AutomationsList"
 import DevicesList from "../../../components/DevicesList/DevicesList"
 
-
 const HomePagesDashboard = () => {
     return (
         <div>
