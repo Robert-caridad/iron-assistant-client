@@ -2,7 +2,7 @@ import { IconEye, IconMessageCircle } from '@tabler/icons-react'
 import { Card, Text, Group, Center, rem, useMantineTheme } from '@mantine/core'
 import classes from './CardArea.module.css'
 
-const CardArea = ({ name, floor, picture, devicesLength }) => {
+const CardArea = ({ }) => {
 
     const theme = useMantineTheme()
 

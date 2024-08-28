@@ -1,7 +1,90 @@
 .card {
-    background-color: var(--mantine-color-body);
+  height: rem(440px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(https://res.cloudinary.com/dwk8n7yvq/image/upload/v1724835968/reactLogo_fldix8.png);
+}
+ 
+.card1 {
+  height: rem(440px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(https://res.cloudinary.com/dwk8n7yvq/image/upload/v1724835981/mantine-seeklogo_arlfx7.svg);
+}
+
+.card2 {
+  height: rem(440px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(https://res.cloudinary.com/dwk8n7yvq/image/upload/v1724838702/mqtt-logo_n7zmas.png);
+}
+
+.card3 {
+  height: rem(440px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(https://res.cloudinary.com/dwk8n7yvq/image/upload/v1724839174/nodeJS_wolnqb.png);
+}
+
+.card4 {
+  height: rem(440px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(https://res.cloudinary.com/dwk8n7yvq/image/upload/v1724839230/mongoDB_ebkw7f.png);
   }
-  
-  .avatar {
-    border: rem(2px) solid var(--mantine-color-body);
-  }
+
+.card5 {
+  height: rem(440px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(https://res.cloudinary.com/dwk8n7yvq/image/upload/v1724839301/express_uywybj.png);
+}
+
+.title {
+  font-family:
+    Greycliff CF,
+    var(--mantine-font-family);
+  font-weight: 900;
+  color: var(--mantine-color-white);
+  line-height: 1.2;
+  font-size: rem(32px);
+  margin-top: var(--mantine-spacing-xs);
+}
+
+.category {
+  color: var(--mantine-color-white);
+  opacity: 0.7;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
