@@ -13,7 +13,7 @@ const Technologies = () => {
                         <Title order={4} className={classes.title}>
                         </Title>
                     </div>
-                    <Button variant="white" color="dark">
+                    <Button className={classes.button} variant="white" color="dark">
                         React
                     </Button>
                 </Paper>
