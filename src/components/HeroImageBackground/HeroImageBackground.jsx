@@ -24,9 +24,6 @@ const HeroImageBackground = () => {
                     <Button className={classes.control} variant="white" size="lg" component={Link} to="/signup" mr={10}>
                         Get started
                     </Button>
-                    <Button className={cx(classes.control, classes.secondaryControl)} size="lg">
-                        Live demo
-                    </Button>
                 </div>
             </div>
         </div>
