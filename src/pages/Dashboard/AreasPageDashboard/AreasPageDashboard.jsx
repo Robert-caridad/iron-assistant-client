@@ -6,7 +6,7 @@ import { useListState } from '@mantine/hooks'
 import areasServices from '../../../services/areas.services'
 import EditAreaForm from '../../../components/EditAreaForm/EditAreaForm'
 import { useDisclosure } from '@mantine/hooks'
-import { Group, Modal } from '@mantine/core'
+import { Group, Loader, Modal } from '@mantine/core'
 
 const AreasPageDashboard = () => {
 
@@ -63,7 +63,11 @@ const AreasPageDashboard = () => {
             <Group pb={20}>
                 <ModalForm name="Area" form={<NewAreaForm />} />
             </Group>
-            <AreasDetailList openModalEdit={openModalEdit} areasData={areasData} handleOnDragEnd={handleOnDragEnd} />
+            {areasData.length == 0 ? <Group justify='center'>
+                <Loader color="blue" size="xl" type="dots" mt={100} />
+            </Group>
+                :
+                <AreasDetailList openModalEdit={openModalEdit} areasData={areasData} handleOnDragEnd={handleOnDragEnd} />}
             <Modal opened={opened} onClose={close} title={`Edit`}>
                 <EditAreaForm id={idArea} closeModalEdit={closeModalEdit} />
             </Modal>

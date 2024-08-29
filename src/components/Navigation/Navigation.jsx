@@ -28,13 +28,13 @@ const Analytics = [
 ]
 
 const Account = [
-    'Spare4',
+    { nameLink: 'User Settings', route: '/dashboard/myaccount' },
     'Spare5',
     'Spare6'
 ]
 
 const Settings = [
-    'Spare7',
+    { nameLink: 'Settings Panel', route: '/dashboard/settings' },
     'Spare8',
     'Spare9'
 ]
@@ -42,8 +42,8 @@ const Settings = [
 const mainLinksMockdata = [
     { icon: IconHome2, label: 'Home', selectLink: Home },
     { icon: IconGauge, label: 'Dashboard', selectLink: Dashboard },
-    { icon: IconDeviceDesktopAnalytics, label: 'Analytics', selectLink: Analytics },
-    { icon: IconUser, label: 'Account', selectLink: Account },
+    { icon: IconDeviceDesktopAnalytics, label: 'Analytics Panel', selectLink: Analytics },
+    { icon: IconUser, label: 'My Account', selectLink: Account },
     { icon: IconSettings, label: 'Settings', selectLink: Settings },
 ]
 

@@ -11,7 +11,6 @@ import {
     Flex,
     Image
 } from '@mantine/core'
-import { MantineLogo } from '@mantinex/mantine-logo'
 import { useDisclosure } from '@mantine/hooks'
 import classes from './NavigationHomePage.module.css'
 import { Link } from 'react-router-dom'
