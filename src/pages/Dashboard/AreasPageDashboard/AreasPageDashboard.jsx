@@ -63,11 +63,13 @@ const AreasPageDashboard = () => {
             <Group pb={20}>
                 <ModalForm name="Area" form={<NewAreaForm />} />
             </Group>
-            {areasData.length == 0 ? <Group justify='center'>
-                <Loader color="blue" size="xl" type="dots" mt={100} />
-            </Group>
+            {areasData.length == 0 ?
+                <Group justify='center'>
+                    <Loader color="blue" size="xl" type="dots" mt={100} />
+                </Group>
                 :
-                <AreasDetailList openModalEdit={openModalEdit} areasData={areasData} handleOnDragEnd={handleOnDragEnd} />}
+                <AreasDetailList openModalEdit={openModalEdit} areasData={areasData} handleOnDragEnd={handleOnDragEnd} />
+            }
             <Modal opened={opened} onClose={close} title={`Edit`}>
                 <EditAreaForm id={idArea} closeModalEdit={closeModalEdit} />
             </Modal>

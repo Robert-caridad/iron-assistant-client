@@ -70,6 +70,8 @@ const EditAutomationForm = ({ id, closeModalEdit }) => {
         form.setFieldValue('picture', imageUrl)
     }
 
+
+    console.log({ ...form.getInputProps('selectedDevices') }, 'automation', alldevices)
     return (
         <Fieldset legend="Area information">
             <form onSubmit={form.onSubmit((values) => handleFormSubmit(values))}>

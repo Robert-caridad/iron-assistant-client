@@ -12,7 +12,8 @@ import UploaderPicture from '../UploaderPicture/UploaderPicture'
 
 const EditAreaForm = ({ id, closeModalEdit }) => {
 
-    const [alldevices, setDevices] = useState([])
+    const [availableDevices, setAvailableDevices] = useState([])
+    const [allDevices, setAllDevices] = useState([])
     const [loading, setLoading] = useState(true)
 
     const form = useForm({
@@ -37,26 +38,45 @@ const EditAreaForm = ({ id, closeModalEdit }) => {
     const fetchArea = () => {
         areasServices
             .getAreaById(id)
-            .then(({ data }) => {
-                const selectedDeviceIds = data.devices.map(device => device._id)
+            .then(async ({ data }) => {
+                const selectedDevices = data.devices.map((device) => device._id)
                 form.setValues({
                     name: data.name || '',
                     icon: data.icon || '',
                     floor: data.floor || '',
                     picture: data.picture || '',
-                    selectedDevices: selectedDeviceIds
+                    selectedDevices
                 })
-                return devicesServices.getAvailableDevices()
+                return {
+                    'available': await devicesServices.getAvailableDevices(),
+                    'all': await devicesServices.getAllDevices()
+                }
             })
-            .then((devicesResponse) => {
-                const devicedata = devicesResponse.data.map(device => ({
+            .then(({ available, all }) => {
+                const availableObj = available.data.map(device => ({
                     label: device.name,
                     value: device._id,
                 }))
-                setDevices(devicedata)
+
+                const allObj = all.data.map(device => {
+                    const isAvailable = availableObj.some((deviceAvailable) => deviceAvailable.value === device._id) || form.getValues().selectedDevices.includes(device._id)
+                    if (isAvailable) {
+                        return {
+                            label: device.name,
+                            value: device._id
+                        }
+                    } else {
+                        return {
+                            label: device.name,
+                            value: device._id,
+                            disabled: true
+                        }
+                    }
+                })
                 setLoading(false)
+                setAllDevices(allObj)
             })
-            .catch(err => console.log(err))
+            .catch(err => console.error(err))
     }
 
     const handleFormSubmit = areaData => {
@@ -82,7 +102,7 @@ const EditAreaForm = ({ id, closeModalEdit }) => {
                     <MultiSelect
                         label="Select devices"
                         placeholder="Pick devices"
-                        data={alldevices}
+                        data={allDevices}
                         {...form.getInputProps('selectedDevices')}
                     />
                 )}
