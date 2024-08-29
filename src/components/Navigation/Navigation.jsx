@@ -7,7 +7,6 @@ import {
     IconUser,
     IconSettings,
 } from '@tabler/icons-react'
-import { MantineLogo } from '@mantinex/mantine-logo'
 import classes from './Navigation.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -28,15 +27,11 @@ const Analytics = [
 ]
 
 const Account = [
-    { nameLink: 'User Settings', route: '/dashboard/myaccount' },
-    'Spare5',
-    'Spare6'
+    { nameLink: 'User Profile', route: '/dashboard/myaccount' },
 ]
 
 const Settings = [
-    { nameLink: 'Settings Panel', route: '/dashboard/settings' },
-    'Spare8',
-    'Spare9'
+    // { nameLink: 'Settings Panel', route: '/dashboard/settings' }
 ]
 
 const mainLinksMockdata = [
@@ -44,7 +39,7 @@ const mainLinksMockdata = [
     { icon: IconGauge, label: 'Dashboard', selectLink: Dashboard },
     { icon: IconDeviceDesktopAnalytics, label: 'Analytics Panel', selectLink: Analytics },
     { icon: IconUser, label: 'My Account', selectLink: Account },
-    { icon: IconSettings, label: 'Settings', selectLink: Settings },
+    // { icon: IconSettings, label: 'Settings', selectLink: Settings },
 ]
 
 const Navigation = () => {

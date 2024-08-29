@@ -67,7 +67,6 @@ const DevicesPageDashboard = () => {
                 <ModalForm name="Devices" form={<NewDeviceForm />} />
             </Group>
             {
-
                 devicesData.length == 0 ? <Group justify='center'>
                     <Loader color="blue" size="xl" type="dots" mt={100} />
                 </Group>

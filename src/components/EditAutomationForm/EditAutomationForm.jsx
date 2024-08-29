@@ -31,10 +31,10 @@ const EditAutomationForm = ({ id, closeModalEdit }) => {
     })
 
     useEffect(() => {
-        fetchArea()
+        fetchautomation()
     }, [])
 
-    const fetchArea = () => {
+    const fetchautomation = () => {
         automationsServices
             .getAutomationById(id)
             .then(({ data }) => {

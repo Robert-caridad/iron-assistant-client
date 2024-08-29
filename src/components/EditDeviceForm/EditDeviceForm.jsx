@@ -5,7 +5,7 @@ import {
     Fieldset,
     Select
 } from '@mantine/core'
-import DevicesServices from '../../services/devices.services'
+import devicesServices from '../../services/devices.services'
 import { useEffect } from 'react'
 import UploaderPicture from '../UploaderPicture/UploaderPicture'
 
@@ -30,7 +30,7 @@ const EditDeviceForm = ({ id, closeModalEdit }) => {
     }, [])
 
     const fetchDevice = () => {
-        DevicesServices
+        devicesServices
             .getDeviceById(id)
             .then(({ data }) => {
                 form.setValues({
@@ -60,7 +60,7 @@ const EditDeviceForm = ({ id, closeModalEdit }) => {
 
     const handleFormSubmit = deviceData => {
 
-        DevicesServices
+        devicesServices
             .putEditDeviceById(id, deviceData)
             .then(
                 closeModalEdit()

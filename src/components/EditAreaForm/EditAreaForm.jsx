@@ -1,4 +1,3 @@
-import { useForm } from '@mantine/form'
 import {
     TextInput,
     Button,
@@ -7,6 +6,7 @@ import {
 } from '@mantine/core'
 import devicesServices from '../../services/devices.services'
 import { useEffect, useState } from 'react'
+import { useForm } from '@mantine/form'
 import areasServices from '../../services/areas.services'
 import UploaderPicture from '../UploaderPicture/UploaderPicture'
 
@@ -83,7 +83,6 @@ const EditAreaForm = ({ id, closeModalEdit }) => {
                         label="Select devices"
                         placeholder="Pick devices"
                         data={alldevices}
-
                         {...form.getInputProps('selectedDevices')}
                     />
                 )}

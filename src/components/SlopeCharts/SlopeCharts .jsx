@@ -5,7 +5,7 @@ const SlopeCharts = () => {
     const [chartOptions, setChartOptions] = useState({
         series: [
             {
-                name: 'Blue',
+                name: 'Bedroom 1',
                 data: [
                     { x: 'Category 1', y: 503 },
                     { x: 'Category 2', y: 580 },
@@ -13,7 +13,7 @@ const SlopeCharts = () => {
                 ],
             },
             {
-                name: 'Green',
+                name: 'Toilet 2',
                 data: [
                     { x: 'Category 1', y: 733 },
                     { x: 'Category 2', y: 385 },
@@ -21,7 +21,7 @@ const SlopeCharts = () => {
                 ],
             },
             {
-                name: 'Orange',
+                name: 'Living room 3',
                 data: [
                     { x: 'Category 1', y: 255 },
                     { x: 'Category 2', y: 211 },
@@ -29,7 +29,7 @@ const SlopeCharts = () => {
                 ],
             },
             {
-                name: 'Red',
+                name: 'Garden',
                 data: [
                     { x: 'Category 1', y: 428 },
                     { x: 'Category 2', y: 749 },
